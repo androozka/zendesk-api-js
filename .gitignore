@@ -1,4 +1,8 @@
-node_modules
-coverage
-*.log
+node_modules/
+coverage/
+package/
+
 .DS_Store
+*.log
+*.tgz
+*.zip

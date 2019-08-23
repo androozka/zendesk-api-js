@@ -14,7 +14,8 @@
     "url": "https://github.com/androozka/zendesk-api-js/issues"
   },
   "scripts": {
-    "test": "jest --watchAll --runInBand"
+    "test": "jest --watchAll --runInBand",
+    "pack": "npm pack"
   },
   "dependencies": {},
   "devDependencies": {
