@@ -1,0 +1,26 @@
+{
+  "name": "@androozka/zendesk-api-js",
+  "version": "1.0.0",
+  "description": "A JS library for interacting with the Zendesk API.",
+  "author": "Andrew Milenic <androozka@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "homepage": "https://github.com/androozka/zendesk-api-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/androozka/zendesk-api-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/androozka/zendesk-api-js/issues"
+  },
+  "scripts": {
+    "test": "jest --watchAll --runInBand"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "eslint": "^6.2.1",
+    "eslint-plugin-jest": "^22.15.2",
+    "jest": "^24.9.0"
+  }
+}
