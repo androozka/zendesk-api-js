@@ -4,10 +4,10 @@
  * for the API calls to work. Select Manage > Settings > Customers, and enable
  * the option.
  * ___
- * @param {string} url - URL to Zendesk instance
- * @param {object} headers - Headers for request
+ * @param {string} instance - Name of Zendesk instance
+ * @param {object} headers - Pre-assembled headers for request
  */
-const tags = (url, headers) => ({
+const tags = (instance, headers) => ({
   /**
    * ## [List Tags](https://developer.zendesk.com/rest_api/docs/support/tags#list-tags)
    * Lists the 500 most popular tags in the last 60 days, in decreasing popularity.
@@ -18,7 +18,7 @@ const tags = (url, headers) => ({
    */
   list: () => ({
     method: 'GET',
-    url: `${url}/api/v2/tags.json`,
+    url: `https://${instance}.zendesk.com/api/v2/tags.json`,
     headers
   }),
 
@@ -37,7 +37,7 @@ const tags = (url, headers) => ({
    */
   show: (type, id) => ({
     method: 'GET',
-    url: `${url}/api/v2/${type}/${id}/tags.json`,
+    url: `https://${instance}.zendesk.com/api/v2/${type}/${id}/tags.json`,
     headers
   }),
 
@@ -57,7 +57,7 @@ const tags = (url, headers) => ({
    */
   set: (type, id, data) => ({
     method: 'POST',
-    url: `${url}/api/v2/${type}/${id}/tags.json`,
+    url: `https://${instance}.zendesk.com/api/v2/${type}/${id}/tags.json`,
     headers,
     data
   }),
@@ -78,7 +78,7 @@ const tags = (url, headers) => ({
    */
   add: (type, id, data) => ({
     method: 'PUT',
-    url: `${url}/api/v2/${type}/${id}/tags.json`,
+    url: `https://${instance}.zendesk.com/api/v2/${type}/${id}/tags.json`,
     headers,
     data
   }),
@@ -99,7 +99,7 @@ const tags = (url, headers) => ({
    */
   remove: (type, id, data) => ({
     method: 'DELETE',
-    url: `${url}/api/v2/${type}/${id}/tags.json`,
+    url: `https://${instance}.zendesk.com/api/v2/${type}/${id}/tags.json`,
     headers,
     data
   }),
@@ -116,7 +116,7 @@ const tags = (url, headers) => ({
    */
   autocomplete: name => ({
     method: 'GET',
-    url: `${url}/api/v2/autocomplete/tags.json?name=${name}`,
+    url: `https://${instance}.zendesk.com/api/v2/autocomplete/tags.json?name=${name}`,
     headers
   })
 });

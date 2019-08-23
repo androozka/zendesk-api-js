@@ -1,7 +1,7 @@
 const tags = require('./tags');
 
-const support = (url, headers) => ({
-  tags: tags(url, headers)
+const support = (instance, headers) => ({
+  tags: tags(instance, headers)
 });
 
 module.exports = support;
