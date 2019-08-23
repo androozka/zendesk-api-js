@@ -1,5 +1,5 @@
 const support = require('./support');
 
-module.exports = (url, headers) => ({
-  support: support(url, headers)
+module.exports = (instance, headers) => ({
+  support: support(instance, headers)
 });
