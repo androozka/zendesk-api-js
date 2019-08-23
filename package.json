@@ -15,7 +15,8 @@
   },
   "scripts": {
     "test": "jest --watchAll --runInBand",
-    "pack": "npm pack"
+    "pack": "npm pack",
+    "publish": "npm publish --access public"
   },
   "dependencies": {},
   "devDependencies": {
