@@ -1,3 +1,11 @@
-tests
-.eslintrc.js
+tests/
+node_modules/
+coverage/
+package/
+
 jest.config.js
+.eslintrc.js
+.DS_Store
+*.log
+*.tgz
+*.zip
