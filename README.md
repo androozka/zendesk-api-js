@@ -67,6 +67,6 @@ const { support, sunshine } = zaf_v2;
 ### Add tags to a ticket
 
 ```javascript
-const list = { tags: ['tag_1', 'tag_2', ... ]}
+const list = { tags: ['tag_1', 'tag_2', ... ] }
 const { data } = await axios(support.tags.add('tickets', 123, list));
 ```
