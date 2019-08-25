@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - 11
+
+install:
+  - npm install -g jest
+  - npm install -g codecov
+
+script:
+  - jest && codecov

@@ -1,5 +1,3 @@
-const support = require('./support');
-
 module.exports = (instance, headers) => ({
-  support: support(instance, headers)
+  support: require('./api/support')(instance, headers)
 });
