@@ -8,6 +8,6 @@ describe('Zendesk App Frameworks', () => {
     beforeAll(() => (api = pkg.v2('', headers)));
     afterAll(() => (api = null));
 
-    test('support api', () => expect(api.support).toBeDefined());
+    test('Support API', () => expect(api.support).toBeDefined());
   });
 });
