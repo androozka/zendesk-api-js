@@ -11,8 +11,10 @@ A JS library for interacting with the Zendesk API.
 
 ## Features
 
-- Generates objects for Zendesk API requests
-- Send as parameter to axios
+- Generates Zendesk API request objects
+- Send prepared object directly to axios
+- Mirrors Zendesk's API documentation
+- No dependencies
 
 ## Installing
 
@@ -70,3 +72,81 @@ const { support, sunshine } = zaf_v2;
 const list = { tags: ['tag_1', 'tag_2', ... ] }
 const { data } = await axios(support.tags.add('tickets', 123, list));
 ```
+
+## API Coverage Status
+
+### Support API
+
+- [x] Search
+- [ ] Users
+- [ ] User Identities
+- [ ] User Passwords
+- [ ] End Users
+- [ ] Groups
+- [ ] Group Memberships
+- [ ] Custom Agent Roles
+- [ ] Organizations
+- [ ] Organization Subscriptions
+- [ ] Organization Memberships
+- [ ] Requests
+- [ ] Tickets
+- [ ] Ticket Import
+- [ ] Attachments
+- [ ] Satisfaction Ratings
+- [ ] Satisfaction Reasons
+- [ ] Suspended Tickets
+- [ ] Ticket Audits
+- [ ] Ticket Comments
+- [ ] Ticket Skips
+- [x] Ticket Metrics
+- [ ] Ticket Metric Events
+- [ ] Ticket Activities
+- [ ] Sessions
+- [x] Tags
+- [ ] Views
+- [ ] Triggers
+- [ ] Automations
+- [ ] SLA Policies
+- [ ] Targets
+- [ ] Target Failures
+- [ ] Macros
+- [ ] Brands
+- [ ] Dynamic Content
+- [ ] Locales
+- [ ] Schedules
+- [ ] Sharing Agreements
+- [ ] Support Addresses
+- [ ] Ticket Forms
+- [ ] Ticket Fields
+- [ ] User Fields
+- [ ] Organization Fields
+- [ ] Job Statuses
+- [ ] Skill-based Routing
+- [ ] Incremental Skill-based Routing
+- [ ] Workspaces
+- [ ] Apps
+- [ ] App Installation Locations
+- [ ] App Locations
+- [ ] OAuth Clients
+- [ ] OAuth Tokens
+- [ ] OAuth Tokens for Grant Types
+- [ ] Authorized Global Clients
+- [ ] Account Settings
+- [ ] Audit Logs
+- [ ] Bookmarks
+- [ ] Push Notification Devices
+- [ ] Resource Collections
+- [ ] Channel Framework
+- [ ] Twitter Channel
+
+### ToDo
+
+- Sunshine API
+- Help Center API
+- Chat API
+- Talk API
+- Sell API
+- Answer Bot API
+- Status API
+- Reseller API
+- NPS API

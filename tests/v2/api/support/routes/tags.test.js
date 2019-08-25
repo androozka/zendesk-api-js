@@ -1,4 +1,4 @@
-const endpoint = require('../../../src/v2/support/tags');
+const endpoint = require('../../../../../src/v2/api/support/routes/tags');
 
 describe('Tags', () => {
   const instance = 'instance';
