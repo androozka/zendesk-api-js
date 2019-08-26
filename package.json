@@ -13,12 +13,21 @@
   "bugs": {
     "url": "https://github.com/androozka/zendesk-api-js/issues"
   },
+  "keywords": [
+    "zendesk",
+    "api",
+    "node"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll --runInBand",
     "pack": "npm pack",
     "publish": "npm publish --access public"
   },
+  "files": [
+    "index.js",
+    "src/*"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^24.0.18",
