@@ -1,11 +1,11 @@
-module.exports = (instance, headers) => ({
+module.exports = ({ instance, headers }) => ({
   list: () => ({
     method: 'GET',
     url: `https://${instance}.zendesk.com/api/v2/tags.json`,
     headers
   }),
 
-  show: (type, id) => ({
+  show: ({ type, id }) => ({
     method: 'GET',
     url: {
       tickets: `https://${instance}.zendesk.com/api/v2/tickets/${id}/tags.json`,
@@ -15,7 +15,7 @@ module.exports = (instance, headers) => ({
     headers
   }),
 
-  set: (type, id, data) => ({
+  set: ({ type, id, data }) => ({
     method: 'POST',
     url: {
       tickets: `https://${instance}.zendesk.com/api/v2/tickets/${id}/tags.json`,
@@ -26,7 +26,7 @@ module.exports = (instance, headers) => ({
     data
   }),
 
-  add: (type, id, data) => ({
+  add: ({ type, id, data }) => ({
     method: 'PUT',
     url: {
       tickets: `https://${instance}.zendesk.com/api/v2/tickets/${id}/tags.json`,
@@ -37,7 +37,7 @@ module.exports = (instance, headers) => ({
     data
   }),
 
-  remove: (type, id, data) => ({
+  remove: ({ type, id, data }) => ({
     method: 'DELETE',
     url: {
       tickets: `https://${instance}.zendesk.com/api/v2/tickets/${id}/tags.json`,
@@ -48,7 +48,7 @@ module.exports = (instance, headers) => ({
     data
   }),
 
-  autocomplete: name => ({
+  autocomplete: ({ name }) => ({
     method: 'GET',
     url: `https://${instance}.zendesk.com/api/v2/autocomplete/tags.json?name=${name}`,
     headers
