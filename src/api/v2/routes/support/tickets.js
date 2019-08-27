@@ -1,5 +1,5 @@
 module.exports = ({ instance, headers }) => ({
-  list: ({ type = '', id }) => ({
+  list: ({ type = '', id = 0 } = { type: '', id: 0 }) => ({
     method: 'GET',
     url: {
       '': `https://${instance}.zendesk.com/api/v2/tickets.json`,
@@ -54,7 +54,7 @@ module.exports = ({ instance, headers }) => ({
   update_many: ({ ids = '', data }) => ({
     method: 'PUT',
     url: `https://${instance}.zendesk.com/api/v2/tickets/update_many.json${
-      ids === `?ids=${ids}` ? '' : ''
+      ids ? `?ids=${ids}` : ''
     }`,
     headers,
     data
