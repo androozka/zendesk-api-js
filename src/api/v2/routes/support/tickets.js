@@ -1,4 +1,4 @@
-module.exports = (instance, headers) => ({
+module.exports = ({ instance, headers }) => ({
   list: ({ type = '', id }) => ({
     method: 'GET',
     url: {

@@ -2,7 +2,7 @@
 
 ![travis_ci](https://travis-ci.org/androozka/zendesk-api-js.svg?branch=master)
 [![codecov](https://codecov.io/gh/androozka/zendesk-api-js/branch/master/graph/badge.svg)](https://codecov.io/gh/androozka/zendesk-api-js)
-![david_dm](http://david-dm.org/androozka/zendesk-api.js/status.svg)
+![David](https://img.shields.io/david/androozka/zendesk-api-js)
 [![install size](https://packagephobia.now.sh/badge?p=@androozka/zendesk-api-js)](https://packagephobia.now.sh/result?p=@androozka/zendesk-api-js)
 [![npm downloads](https://img.shields.io/npm/dt/@androozka/zendesk-api-js)](http://npm-stat.com/charts.html?package=@androozka/zendesk-api-js)
 ![twitter follow](https://img.shields.io/twitter/follow/androozka?label=Follow&style=social)
