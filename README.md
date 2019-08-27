@@ -1,5 +1,6 @@
 # @androozka/zendesk-api-js
 
+![npm](https://img.shields.io/npm/v/@androozka/zendesk-api-js)
 ![travis_ci](https://travis-ci.org/androozka/zendesk-api-js.svg?branch=master)
 [![codecov](https://codecov.io/gh/androozka/zendesk-api-js/branch/master/graph/badge.svg)](https://codecov.io/gh/androozka/zendesk-api-js)
 ![David](https://img.shields.io/david/androozka/zendesk-api-js)
@@ -13,7 +14,7 @@ A JS library for interacting with the Zendesk API.
 
 - Generates Zendesk API request objects
 - Send prepared object directly to axios
-- Mirrors Zendesk's API documentation
+- Mirrors [Zendesk's API documentation](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources)
 - No dependencies
 
 ## Installing
