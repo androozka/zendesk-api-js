@@ -2,7 +2,7 @@
 
 ![travis_ci](https://travis-ci.org/androozka/zendesk-api-js.svg?branch=master)
 [![codecov](https://codecov.io/gh/androozka/zendesk-api-js/branch/master/graph/badge.svg)](https://codecov.io/gh/androozka/zendesk-api-js)
-![david_dm](http://david-dm.org/androozka/zendesk-api.js/status.svg)
+![David](https://img.shields.io/david/androozka/zendesk-api-js)
 [![install size](https://packagephobia.now.sh/badge?p=@androozka/zendesk-api-js)](https://packagephobia.now.sh/result?p=@androozka/zendesk-api-js)
 [![npm downloads](https://img.shields.io/npm/dt/@androozka/zendesk-api-js)](http://npm-stat.com/charts.html?package=@androozka/zendesk-api-js)
 ![twitter follow](https://img.shields.io/twitter/follow/androozka?label=Follow&style=social)
@@ -55,7 +55,7 @@ const headers = {
 ### Choose framework version
 
 ```javascript
-const zaf_v2 = zdApi.v2(instance, headers);
+const zaf_v2 = zdApi.v2({ instance, headers });
 ```
 
 ### Selecting API endpoints
@@ -69,8 +69,9 @@ const { support, sunshine } = zaf_v2;
 ### Add tags to a ticket
 
 ```javascript
-const list = { tags: ['tag_1', 'tag_2', ... ] }
-const { data } = await axios(support.tags.add('tickets', 123, list));
+const data = { tags: ['tag_1', 'tag_2', ... ] }
+const req = support.tags.add({ type: 'tickets', id: 123, data });
+const res = await axios(req);
 ```
 
 ## API Coverage Status
@@ -89,7 +90,7 @@ const { data } = await axios(support.tags.add('tickets', 123, list));
 - [ ] Organization Subscriptions
 - [ ] Organization Memberships
 - [ ] Requests
-- [ ] Tickets
+- [x] Tickets
 - [ ] Ticket Import
 - [ ] Attachments
 - [ ] Satisfaction Ratings

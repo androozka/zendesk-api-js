@@ -1,13 +1,20 @@
 const pkg = require('..');
 
-describe('Zendesk App Frameworks', () => {
-  const headers = {};
-  let api;
+describe('package', () => {
+  let instance, headers;
 
-  describe('v2', () => {
-    beforeAll(() => (api = pkg.v2('', headers)));
-    afterAll(() => (api = null));
+  beforeEach(() => {
+    instance = 'test';
+    headers = {};
+  });
 
-    test('Support API', () => expect(api.support).toBeDefined());
+  afterEach(() => {
+    instance = '';
+    headers = null;
+  });
+
+  test('zaf v2', () => {
+    expect(typeof pkg.v2).toBe('function');
+    expect(typeof pkg.v2({ instance, headers })).toBe('object');
   });
 });
