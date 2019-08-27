@@ -5,10 +5,10 @@ module.exports = ({ instance, headers }) => ({
     headers
   }),
 
-  show: ({ type = '', ticket_metric_id, ticket_id }) => ({
+  show: ({ type = 'default', ticket_metric_id, ticket_id }) => ({
     method: 'GET',
     url: {
-      '': `https://${instance}.zendesk.com/api/v2/ticket_metrics/${ticket_metric_id}.json`,
+      default: `https://${instance}.zendesk.com/api/v2/ticket_metrics/${ticket_metric_id}.json`,
       tickets: `https://${instance}.zendesk.com/api/v2/tickets/${ticket_id}/metrics.json`
     }[type],
     headers
