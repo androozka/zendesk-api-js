@@ -1,8 +1,8 @@
 module.exports = ({ instance, headers }) => ({
-  list: ({ type = '', id = 0 } = { type: '', id: 0 }) => ({
+  list: ({ type, id = 0 } = { type: 'tickets', id: 0 }) => ({
     method: 'GET',
     url: {
-      '': `https://${instance}.zendesk.com/api/v2/tickets.json`,
+      tickets: `https://${instance}.zendesk.com/api/v2/tickets.json`,
       organizations: `https://${instance}.zendesk.com/api/v2/organizations/${id}/tickets.json`,
       users_requested: `https://${instance}.zendesk.com/api/v2/users/${id}/tickets/requested.json`,
       users_ccd: `https://${instance}.zendesk.com/api/v2/users/${id}/tickets/ccd.json`,
