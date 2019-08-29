@@ -6,6 +6,8 @@ node_js:
 install:
   - npm install -g jest
   - npm install -g codecov
+  - npm install -g yarn
+  - yarn install
 
 script:
   - jest && codecov
