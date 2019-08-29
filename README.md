@@ -12,10 +12,11 @@ A JS library for interacting with the Zendesk API.
 
 ## Features
 
-- Generates Zendesk API request objects
-- Send prepared object directly to axios
-- Mirrors [Zendesk's API documentation](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources)
-- No dependencies
+- Generates Zendesk API request objects 😎
+- Send prepared object directly to axios 🤯
+- Mirrors [Zendesk's API documentation](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources) _(as close as feasible)_ 🤓
+- [@hapi/joi](https://www.npmjs.com/package/@hapi/joi) used for data validation 🔐
+- 🚧 Under construction 🚧 - Watch for updates 👀
 
 ## Installing
 
