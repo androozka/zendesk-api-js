@@ -1,12 +1,12 @@
 # @androozka/zendesk-api-js
 
 ![npm](https://img.shields.io/npm/v/@androozka/zendesk-api-js)
-![travis_ci](https://travis-ci.org/androozka/zendesk-api-js.svg?branch=master)
+[![Build Status](https://travis-ci.com/androozka/zendesk-api-js.svg?branch=master)](https://travis-ci.com/androozka/zendesk-api-js)
 [![codecov](https://codecov.io/gh/androozka/zendesk-api-js/branch/master/graph/badge.svg)](https://codecov.io/gh/androozka/zendesk-api-js)
-![David](https://img.shields.io/david/androozka/zendesk-api-js)
+[![David](https://img.shields.io/david/androozka/zendesk-api-js)](https://david-dm.org/androozka/zendesk-api-js)
 [![install size](https://packagephobia.now.sh/badge?p=@androozka/zendesk-api-js)](https://packagephobia.now.sh/result?p=@androozka/zendesk-api-js)
 [![npm downloads](https://img.shields.io/npm/dt/@androozka/zendesk-api-js)](http://npm-stat.com/charts.html?package=@androozka/zendesk-api-js)
-![twitter follow](https://img.shields.io/twitter/follow/androozka?label=Follow&style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/androozka?label=Follow&style=social)
 
 A JS library for interacting with the Zendesk API.
 
@@ -23,13 +23,13 @@ A JS library for interacting with the Zendesk API.
 ### Using npm
 
 ```bash
-$ npm install @androozka/zendesk-api-js
+npm install @androozka/zendesk-api-js
 ```
 
 ### Using yarn
 
 ```bash
-$ yarn add @androozka/zendesk-api-js
+yarn add @androozka/zendesk-api-js
 ```
 
 ## Usage
@@ -81,7 +81,7 @@ const res = await axios(req);
 ### Support API
 
 - [x] Search
-- [ ] Users
+- [x] Users
 - [ ] User Identities
 - [ ] User Passwords
 - [ ] End Users
