@@ -1,165 +1,321 @@
-module.exports = ({ instance, headers }) => ({
-  list: ({ type, id = 0 } = { type: 'tickets', id: 0 }) => ({
-    method: 'GET',
-    url: {
-      tickets: `https://${instance}.zendesk.com/api/v2/tickets.json`,
-      organizations: `https://${instance}.zendesk.com/api/v2/organizations/${id}/tickets.json`,
-      users_requested: `https://${instance}.zendesk.com/api/v2/users/${id}/tickets/requested.json`,
-      users_ccd: `https://${instance}.zendesk.com/api/v2/users/${id}/tickets/ccd.json`,
-      users_assigned: `https://${instance}.zendesk.com/api/v2/users/${id}/tickets/assigned.json`,
-      recent: `https://${instance}.zendesk.com/api/v2/tickets/recent.json`
-    }[type],
-    headers
-  }),
+const validate = require('../../validators/support/tickets');
 
-  list_by_external_id: ({ external_id }) => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/tickets.json?external_id=${external_id}`,
-    headers
-  }),
+module.exports = ({ instance, headers }) => {
+  const url = `https://${instance}.zendesk.com`;
 
-  show: ({ id }) => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}.json`,
-    headers
-  }),
+  return {
+    list: (options = {}) => {
+      const { error } = validate.list(options);
+      if (error) throw new Error(error.details[0].message);
 
-  show_many: ({ ids }) => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/show_many.json?ids=${ids}`,
-    headers
-  }),
+      const { type = 'tickets', id = 0 } = options;
+      if (id && (type === 'tickets' || type === 'recent'))
+        throw new Error(
+          'if "id" is set, type cannont be "tickets" or "recent"'
+        );
 
-  create: ({ data }) => ({
-    method: 'POST',
-    url: `https://${instance}.zendesk.com/api/v2/tickets.json`,
-    headers,
-    data
-  }),
+      return {
+        method: 'GET',
+        url: {
+          tickets: `${url}/api/v2/tickets.json`,
+          organizations: `${url}/api/v2/organizations/${id}/tickets.json`,
+          users_requested: `${url}/api/v2/users/${id}/tickets/requested.json`,
+          users_ccd: `${url}/api/v2/users/${id}/tickets/ccd.json`,
+          users_assigned: `${url}/api/v2/users/${id}/tickets/assigned.json`,
+          recent: `${url}/api/v2/tickets/recent.json`
+        }[type],
+        headers
+      };
+    },
 
-  create_many: ({ data }) => ({
-    method: 'POST',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/create_many.json`,
-    headers,
-    data
-  }),
+    list_by_external_id: (options = {}) => {
+      const { error } = validate.list_by_external_id(options);
+      if (error) throw new Error(error.details[0].message);
 
-  update: ({ id, data }) => ({
-    method: 'PUT',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}.json`,
-    headers,
-    data
-  }),
+      const { external_id } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/tickets.json?external_id=${external_id}`,
+        headers
+      };
+    },
 
-  update_many: ({ ids = '', data }) => ({
-    method: 'PUT',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/update_many.json${
-      ids ? `?ids=${ids}` : ''
-    }`,
-    headers,
-    data
-  }),
+    show: (options = {}) => {
+      const { error } = validate.show(options);
+      if (error) throw new Error(error.details[0].message);
 
-  mark_as_spam: ({ id }) => ({
-    method: 'PUT',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}/mark_as_spam.json`,
-    headers
-  }),
+      const { id } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/tickets/${id}.json`,
+        headers
+      };
+    },
 
-  mark_as_spam_bulk: ({ ids }) => ({
-    method: 'PUT',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/mark_many_as_spam.json?ids=${ids}`,
-    headers
-  }),
+    show_many: (options = {}) => {
+      const { error } = validate.show_many(options);
+      if (error) throw new Error(error.details[0].message);
 
-  merge: ({ id, data }) => ({
-    method: 'POST',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}/merge.json`,
-    headers,
-    data
-  }),
+      const { ids } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/tickets/show_many.json?ids=${ids}`,
+        headers
+      };
+    },
 
-  related: ({ id }) => ({
-    method: 'POST',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}/related.json`,
-    headers
-  }),
+    create: (options = {}) => {
+      const { error } = validate.create(options);
+      if (error) throw new Error(error.details[0].message);
 
-  delete: ({ id }) => ({
-    method: 'DELETE',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}.json`,
-    headers
-  }),
+      const { data } = options;
+      return {
+        method: 'POST',
+        url: `${url}/api/v2/tickets.json`,
+        headers,
+        data
+      };
+    },
 
-  delete_bulk: ({ ids }) => ({
-    method: 'DELETE',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/destroy_many.json?ids=${ids}`,
-    headers
-  }),
+    create_many: (options = {}) => {
+      const { error } = validate.create_many(options);
+      if (error) throw new Error(error.details[0].message);
 
-  deleted: () => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/deleted_tickets.json`,
-    headers
-  }),
+      const { data } = options;
+      return {
+        method: 'POST',
+        url: `${url}/api/v2/tickets/create_many.json`,
+        headers,
+        data
+      };
+    },
 
-  restore: ({ id }) => ({
-    method: 'PUT',
-    url: `https://${instance}.zendesk.com/api/v2/deleted_tickets/${id}/restore.json`,
-    headers
-  }),
+    update: (options = {}) => {
+      const { error } = validate.update(options);
+      if (error) throw new Error(error.details[0].message);
 
-  restore_bulk: ({ ids }) => ({
-    method: 'PUT',
-    url: `https://${instance}.zendesk.com/api/v2/deleted_tickets/restore_many?ids=${ids}`,
-    headers
-  }),
+      const { id, data } = options;
+      return {
+        method: 'PUT',
+        url: `${url}/api/v2/tickets/${id}.json`,
+        headers,
+        data
+      };
+    },
 
-  delete_permanently: ({ id }) => ({
-    method: 'DELETE',
-    url: `https://${instance}.zendesk.com/api/v2/deleted_tickets/${id}.json`,
-    headers
-  }),
+    update_many: (options = {}) => {
+      const { error } = validate.update_many(options);
+      if (error) throw new Error(error.details[0].message);
 
-  delete_permanently_bulk: ({ ids }) => ({
-    method: 'DELETE',
-    url: `https://${instance}.zendesk.com/api/v2/deleted_tickets/destroy_many?ids=${ids}`,
-    headers
-  }),
+      const { ids = '', data } = options;
+      const params = ids ? `?ids=${ids}` : '';
+      return {
+        method: 'PUT',
+        url: `${url}/api/v2/tickets/update_many.json${params}`,
+        headers,
+        data
+      };
+    },
 
-  collaborators: ({ id }) => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}/collaborators.json`,
-    headers
-  }),
+    mark_as_spam: (options = {}) => {
+      const { error } = validate.mark_as_spam(options);
+      if (error) throw new Error(error.details[0].message);
 
-  followers: ({ id }) => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}/followers.json`,
-    headers
-  }),
+      const { id } = options;
+      return {
+        method: 'PUT',
+        url: `${url}/api/v2/tickets/${id}/mark_as_spam.json`,
+        headers
+      };
+    },
 
-  email_ccs: ({ id }) => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}/email_ccs.json`,
-    headers
-  }),
+    mark_as_spam_bulk: (options = {}) => {
+      const { error } = validate.mark_as_spam_bulk(options);
+      if (error) throw new Error(error.details[0].message);
 
-  incidents: ({ id }) => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/tickets/${id}/incidents.json`,
-    headers
-  }),
+      const { ids } = options;
+      return {
+        method: 'PUT',
+        url: `${url}/api/v2/tickets/mark_many_as_spam.json?ids=${ids}`,
+        headers
+      };
+    },
 
-  problems: () => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/problems.json`,
-    headers
-  }),
+    merge: (options = {}) => {
+      const { error } = validate.merge(options);
+      if (error) throw new Error(error.details[0].message);
 
-  autocomplete_problems: ({ name }) => ({
-    method: 'POST',
-    url: `https://${instance}.zendesk.com/api/v2/problems/autocomplete.json?text=${name}`,
-    headers
-  })
-});
+      const { id, data } = options;
+      return {
+        method: 'POST',
+        url: `${url}/api/v2/tickets/${id}/merge.json`,
+        headers,
+        data
+      };
+    },
+
+    related: (options = {}) => {
+      const { error } = validate.related(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { id } = options;
+      return {
+        method: 'POST',
+        url: `${url}/api/v2/tickets/${id}/related.json`,
+        headers
+      };
+    },
+
+    delete: (options = {}) => {
+      const { error } = validate.delete(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { id } = options;
+      return {
+        method: 'DELETE',
+        url: `${url}/api/v2/tickets/${id}.json`,
+        headers
+      };
+    },
+
+    delete_bulk: (options = {}) => {
+      const { error } = validate.delete_bulk(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { ids } = options;
+      return {
+        method: 'DELETE',
+        url: `${url}/api/v2/tickets/destroy_many.json?ids=${ids}`,
+        headers
+      };
+    },
+
+    deleted: (options = null) => {
+      if (options) throw new Error('no options are allowed');
+
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/deleted_tickets.json`,
+        headers
+      };
+    },
+
+    restore: (options = {}) => {
+      const { error } = validate.restore(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { id } = options;
+      return {
+        method: 'PUT',
+        url: `${url}/api/v2/deleted_tickets/${id}/restore.json`,
+        headers
+      };
+    },
+
+    restore_bulk: (options = {}) => {
+      const { error } = validate.restore_bulk(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { ids } = options;
+      return {
+        method: 'PUT',
+        url: `${url}/api/v2/deleted_tickets/restore_many?ids=${ids}`,
+        headers
+      };
+    },
+
+    delete_permanently: (options = {}) => {
+      const { error } = validate.delete_permanently(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { id } = options;
+      return {
+        method: 'DELETE',
+        url: `${url}/api/v2/deleted_tickets/${id}.json`,
+        headers
+      };
+    },
+
+    delete_permanently_bulk: (options = {}) => {
+      const { error } = validate.delete_permanently_bulk(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { ids } = options;
+      return {
+        method: 'DELETE',
+        url: `${url}/api/v2/deleted_tickets/destroy_many?ids=${ids}`,
+        headers
+      };
+    },
+
+    collaborators: (options = {}) => {
+      const { error } = validate.collaborators(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { id } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/tickets/${id}/collaborators.json`,
+        headers
+      };
+    },
+
+    followers: (options = {}) => {
+      const { error } = validate.followers(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { id } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/tickets/${id}/followers.json`,
+        headers
+      };
+    },
+
+    email_ccs: (options = {}) => {
+      const { error } = validate.email_ccs(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { id } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/tickets/${id}/email_ccs.json`,
+        headers
+      };
+    },
+
+    incidents: (options = {}) => {
+      const { error } = validate.incidents(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { id } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/tickets/${id}/incidents.json`,
+        headers
+      };
+    },
+
+    problems: (options = null) => {
+      if (options) throw new Error('no options are allowed');
+
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/problems.json`,
+        headers
+      };
+    },
+
+    autocomplete_problems: (options = {}) => {
+      const { error } = validate.autocomplete_problems(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { name } = options;
+      return {
+        method: 'POST',
+        url: `${url}/api/v2/problems/autocomplete.json?text=${name}`,
+        headers
+      };
+    }
+  };
+};
