@@ -14,9 +14,7 @@ A JS library for interacting with the Zendesk API.
 
 - Generates Zendesk API request objects 😎
 - Send prepared object directly to axios 🤯
-- Mirrors [Zendesk's API documentation](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources) _(as close as feasible)_ 🤓
-- [@hapi/joi](https://www.npmjs.com/package/@hapi/joi) used for data validation 🔐
-- 🚧 Under construction 🚧 - Watch for updates 👀
+- Mirrors [Zendesk's API documentation](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources) 👀
 
 ## Installing
 
@@ -80,49 +78,52 @@ const res = await axios(req);
 
 ### Support API
 
-- [x] Search
-- [x] Users
+- [x] **Search**
+- [x] **Users**
+- [x] **Tickets**
+- [x] **Ticket Metrics**
+- [x] **Tags**
+
+#### Under Construction
+
+- [ ] Views
+- [ ] Organizations
+- [ ] Groups
+- [ ] Ticket Forms
+- [ ] Ticket Fields
+- [ ] User Fields
+- [ ] Organization Fields
+- [ ] Brands
 - [ ] User Identities
 - [ ] User Passwords
 - [ ] End Users
-- [ ] Groups
 - [ ] Group Memberships
 - [ ] Custom Agent Roles
-- [ ] Organizations
 - [ ] Organization Subscriptions
 - [ ] Organization Memberships
 - [ ] Requests
-- [x] Tickets
+- [ ] Ticket Audits
+- [ ] Ticket Comments
+- [ ] Ticket Skips
+- [ ] Ticket Metric Events
+- [ ] Ticket Activities
 - [ ] Ticket Import
 - [ ] Attachments
 - [ ] Satisfaction Ratings
 - [ ] Satisfaction Reasons
 - [ ] Suspended Tickets
-- [ ] Ticket Audits
-- [ ] Ticket Comments
-- [ ] Ticket Skips
-- [x] Ticket Metrics
-- [ ] Ticket Metric Events
-- [ ] Ticket Activities
 - [ ] Sessions
-- [x] Tags
-- [ ] Views
 - [ ] Triggers
 - [ ] Automations
 - [ ] SLA Policies
 - [ ] Targets
 - [ ] Target Failures
 - [ ] Macros
-- [ ] Brands
 - [ ] Dynamic Content
 - [ ] Locales
 - [ ] Schedules
 - [ ] Sharing Agreements
 - [ ] Support Addresses
-- [ ] Ticket Forms
-- [ ] Ticket Fields
-- [ ] User Fields
-- [ ] Organization Fields
 - [ ] Job Statuses
 - [ ] Skill-based Routing
 - [ ] Incremental Skill-based Routing
@@ -142,7 +143,7 @@ const res = await axios(req);
 - [ ] Channel Framework
 - [ ] Twitter Channel
 
-### ToDo
+### APIs Up Next
 
 - Sunshine API
 - Help Center API
