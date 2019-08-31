@@ -1,56 +1,79 @@
-module.exports = ({ instance, headers }) => ({
-  list: () => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/tags.json`,
-    headers
-  }),
+const validate = require('../../validators/support/tags');
 
-  show: ({ type, id }) => ({
-    method: 'GET',
-    url: {
-      tickets: `https://${instance}.zendesk.com/api/v2/tickets/${id}/tags.json`,
-      organizations: `https://${instance}.zendesk.com/api/v2/organizations/${id}/tags.json`,
-      users: `https://${instance}.zendesk.com/api/v2/users/${id}/tags.json`
-    }[type],
-    headers
-  }),
+module.exports = ({ instance, headers }) => {
+  const url = `https://${instance}.zendesk.com`;
 
-  set: ({ type, id, data }) => ({
-    method: 'POST',
-    url: {
-      tickets: `https://${instance}.zendesk.com/api/v2/tickets/${id}/tags.json`,
-      organizations: `https://${instance}.zendesk.com/api/v2/organizations/${id}/tags.json`,
-      users: `https://${instance}.zendesk.com/api/v2/users/${id}/tags.json`
-    }[type],
-    headers,
-    data
-  }),
+  return {
+    list: (options = null) => {
+      if (options) throw new Error('no options are allowed');
 
-  add: ({ type, id, data }) => ({
-    method: 'PUT',
-    url: {
-      tickets: `https://${instance}.zendesk.com/api/v2/tickets/${id}/tags.json`,
-      organizations: `https://${instance}.zendesk.com/api/v2/organizations/${id}/tags.json`,
-      users: `https://${instance}.zendesk.com/api/v2/users/${id}/tags.json`
-    }[type],
-    headers,
-    data
-  }),
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/tags.json`,
+        headers
+      };
+    },
 
-  remove: ({ type, id, data }) => ({
-    method: 'DELETE',
-    url: {
-      tickets: `https://${instance}.zendesk.com/api/v2/tickets/${id}/tags.json`,
-      organizations: `https://${instance}.zendesk.com/api/v2/organizations/${id}/tags.json`,
-      users: `https://${instance}.zendesk.com/api/v2/users/${id}/tags.json`
-    }[type],
-    headers,
-    data
-  }),
+    show: (options = {}) => {
+      const { error } = validate.show(options);
+      if (error) throw new Error(error.details[0].message);
 
-  autocomplete: ({ name }) => ({
-    method: 'GET',
-    url: `https://${instance}.zendesk.com/api/v2/autocomplete/tags.json?name=${name}`,
-    headers
-  })
-});
+      const { type, id } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/${type}/${id}/tags.json`,
+        headers
+      };
+    },
+
+    set: (options = {}) => {
+      const { error } = validate.set(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { type, id, data } = options;
+      return {
+        method: 'POST',
+        url: `${url}/api/v2/${type}/${id}/tags.json`,
+        headers,
+        data
+      };
+    },
+
+    add: (options = {}) => {
+      const { error } = validate.add(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { type, id, data } = options;
+      return {
+        method: 'PUT',
+        url: `${url}/api/v2/${type}/${id}/tags.json`,
+        headers,
+        data
+      };
+    },
+
+    remove: (options = {}) => {
+      const { error } = validate.remove(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { type, id } = options;
+      return {
+        method: 'DELETE',
+        url: `${url}/api/v2/${type}/${id}/tags.json`,
+        headers
+      };
+    },
+
+    autocomplete: (options = {}) => {
+      const { error } = validate.autocomplete(options);
+      if (error) throw new Error(error.details[0].message);
+
+      const { name } = options;
+      return {
+        method: 'GET',
+        url: `${url}/api/v2/autocomplete/tags.json?name=${name}`,
+        headers
+      };
+    }
+  };
+};

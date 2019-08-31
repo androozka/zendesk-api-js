@@ -1,6 +1,6 @@
 {
   "name": "@androozka/zendesk-api-js",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A JS library for interacting with the Zendesk API.",
   "author": "Andrew Milenic <androozka@gmail.com>",
   "license": "MIT",
@@ -20,15 +20,15 @@
   ],
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll --runInBand",
-    "pack": "npm pack",
-    "publish": "npm publish --access public"
+    "test:watch": "jest --watchAll --runInBand"
   },
   "files": [
     "index.js",
     "src/*"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@hapi/joi": "^15.1.1"
+  },
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "eslint": "^6.2.1",
