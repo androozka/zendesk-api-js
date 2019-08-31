@@ -1,5 +1,17 @@
-module.exports = ({ instance, headers }) => ({ search_string }) => ({
-  method: 'GET',
-  url: `https://${instance}.zendesk.com/api/v2/search.json?query=${search_string}`,
-  headers
-});
+const validate = require('../../validators/support/search');
+
+module.exports = ({ instance, headers }) => {
+  const url = `https://${instance}.zendesk.com`;
+
+  return (options = {}) => {
+    const { error } = validate(options);
+    if (error) throw new Error(error.details[0].message);
+
+    const { search_string } = options;
+    return {
+      method: 'GET',
+      url: `${url}/api/v2/search.json?query=${search_string}`,
+      headers
+    };
+  };
+};

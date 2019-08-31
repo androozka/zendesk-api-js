@@ -1,42 +1,56 @@
 const endpoint = require('../../../../../../src/api/v2/routes/support/ticketMetrics');
 
 const instance = 'instance';
-const headers = {};
+const url = `https://${instance}.zendesk.com`;
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: 'Basic <64bit_encoded_credentials>'
+};
 
 describe('ticket metrics', () => {
-  let ticketMetrics, ticket_metric_id, ticket_id;
+  let ticketMetrics;
 
-  beforeAll(() => {
-    ticketMetrics = endpoint({ instance, headers });
-    ticket_metric_id = 123;
-    ticket_id = 123;
-  });
+  beforeAll(() => (ticketMetrics = endpoint({ instance, headers })));
+  afterAll(() => (ticketMetrics = null));
 
-  afterAll(() => {
-    ticketMetrics = null;
-    ticket_metric_id = 0;
-    ticket_id = 0;
-  });
+  describe('list ticket metrics', () => {
+    it('should process w/ valid input', () => {
+      expect(ticketMetrics.list()).toEqual({
+        method: 'GET',
+        url: `${url}/api/v2/ticket_metrics.json`,
+        headers
+      });
+    });
 
-  test('list ticket metrics', () => {
-    expect(ticketMetrics.list()).toEqual({
-      method: 'GET',
-      url: `https://${instance}.zendesk.com/api/v2/ticket_metrics.json`,
-      headers
+    it('should throw error w/ invalid input', () => {
+      expect(() => ticketMetrics.list('invalid')).toThrowError();
     });
   });
 
-  test('show ticket metrics', () => {
-    expect(ticketMetrics.show({ ticket_metric_id })).toEqual({
-      method: 'GET',
-      url: `https://instance.zendesk.com/api/v2/ticket_metrics/${ticket_metric_id}.json`,
-      headers
+  describe('show ticket metrics', () => {
+    it('should process w/ valid input', () => {
+      expect(ticketMetrics.show({ ticket_id: 123 })).toEqual({
+        method: 'GET',
+        url: `${url}/api/v2/tickets/123/metrics.json`,
+        headers
+      });
+
+      expect(ticketMetrics.show({ ticket_metric_id: 123 })).toEqual({
+        method: 'GET',
+        url: `${url}/api/v2/ticket_metrics/123.json`,
+        headers
+      });
     });
 
-    expect(ticketMetrics.show({ type: 'tickets', ticket_id })).toEqual({
-      method: 'GET',
-      url: `https://instance.zendesk.com/api/v2/tickets/${ticket_id}/metrics.json`,
-      headers
+    it('should throw error w/ invalid input', () => {
+      expect(() => ticketMetrics.show()).toThrowError();
+      expect(() => ticketMetrics.show({})).toThrowError();
+      expect(() => ticketMetrics.show('invalid')).toThrowError();
+      expect(() => ticketMetrics.show({ ticket_id: 0 })).toThrowError();
+      expect(() => ticketMetrics.show({ ticket_metric_id: 0 })).toThrowError();
+      expect(() =>
+        ticketMetrics.show({ ticket_id: 0, ticket_metric_id: 0 })
+      ).toThrowError();
     });
   });
 });
