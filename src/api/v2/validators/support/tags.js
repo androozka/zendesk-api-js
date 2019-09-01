@@ -22,6 +22,10 @@ module.exports = {
       data: data.required()
     }),
   remove: options =>
-    Joi.validate(options, { type: type.required(), id: id.required() }),
+    Joi.validate(options, {
+      type: type.required(),
+      id: id.required(),
+      data: data.required()
+    }),
   autocomplete: options => Joi.validate(options, { name: name.required() })
 };
