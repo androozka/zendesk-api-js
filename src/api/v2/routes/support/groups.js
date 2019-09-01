@@ -65,7 +65,7 @@ module.exports = ({ instance, headers }) => {
     },
 
     delete: (options = {}) => {
-      const { error } = validate.show(options);
+      const { error } = validate.delete(options);
       if (error) throw new Error(error.details[0].message);
 
       const { id } = options;
