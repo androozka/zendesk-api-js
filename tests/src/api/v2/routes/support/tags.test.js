@@ -140,22 +140,27 @@ describe('tags', () => {
 
   describe('remove tags', () => {
     it('should process w/ valid input', () => {
-      expect(tags.remove({ type: 'tickets', id: 123 })).toEqual({
+      expect(tags.remove({ type: 'tickets', id: 123, data: {} })).toEqual({
         method: 'DELETE',
         url: `${url}/api/v2/tickets/123/tags.json`,
-        headers
+        headers,
+        data: {}
       });
 
-      expect(tags.remove({ type: 'organizations', id: 123 })).toEqual({
-        method: 'DELETE',
-        url: `${url}/api/v2/organizations/123/tags.json`,
-        headers
-      });
+      expect(tags.remove({ type: 'organizations', id: 123, data: {} })).toEqual(
+        {
+          method: 'DELETE',
+          url: `${url}/api/v2/organizations/123/tags.json`,
+          headers,
+          data: {}
+        }
+      );
 
-      expect(tags.remove({ type: 'users', id: 123 })).toEqual({
+      expect(tags.remove({ type: 'users', id: 123, data: {} })).toEqual({
         method: 'DELETE',
         url: `${url}/api/v2/users/123/tags.json`,
-        headers
+        headers,
+        data: {}
       });
     });
 
@@ -171,7 +176,7 @@ describe('tags', () => {
         tags.remove({ type: 'tickets', id: 'invalid' })
       ).toThrowError();
       expect(() =>
-        tags.remove({ type: 'tickets', id: 123, invalid: '' })
+        tags.remove({ type: 'tickets', id: 123, data: 'invalid' })
       ).toThrowError();
     });
   });

@@ -56,11 +56,12 @@ module.exports = ({ instance, headers }) => {
       const { error } = validate.remove(options);
       if (error) throw new Error(error.details[0].message);
 
-      const { type, id } = options;
+      const { type, id, data } = options;
       return {
         method: 'DELETE',
         url: `${url}/api/v2/${type}/${id}/tags.json`,
-        headers
+        headers,
+        data
       };
     },
 
