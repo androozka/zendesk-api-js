@@ -10,5 +10,6 @@ module.exports = {
   show: options => Joi.validate(options, { id: id.required() }),
   create: options => Joi.validate(options, { data: data.required() }),
   update: options =>
-    Joi.validate(options, { id: id.required(), data: data.required() })
+    Joi.validate(options, { id: id.required(), data: data.required() }),
+  delete: options => Joi.validate(options, { id: id.required() })
 };
