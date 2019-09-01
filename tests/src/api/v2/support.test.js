@@ -13,8 +13,10 @@ describe('support api', () => {
 
   describe('tickets', () => {
     test('search', () => check(support.search, 'function'));
-    test('tickets', () => check(support.tickets));
-    test('ticket_metrics', () => check(support.ticket_metrics));
     test('tags', () => check(support.tags));
+    test('ticket_fields', () => check(support.ticket_fields));
+    test('ticket_forms', () => check(support.ticket_forms));
+    test('ticket_metrics', () => check(support.ticket_metrics));
+    test('tickets', () => check(support.tickets));
   });
 });
