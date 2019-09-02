@@ -1,5 +1,6 @@
 module.exports = ({ instance, headers }) => ({
   groups: require('./groups')({ instance, headers }),
+  organizations: require('./organizations')({ instance, headers }),
   search: require('./search')({ instance, headers }),
   tags: require('./tags')({ instance, headers }),
   ticket_comments: require('./ticket_comments')({ instance, headers }),
