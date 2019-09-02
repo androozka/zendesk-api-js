@@ -12,6 +12,8 @@ describe('support api', () => {
   afterEach(() => (support = null));
 
   describe('tickets', () => {
+    test('groups', () => check(support.groups));
+    test('organizations', () => check(support.organizations));
     test('search', () => check(support.search, 'function'));
     test('tags', () => check(support.tags));
     test('ticket_comments', () => check(support.ticket_comments));
@@ -19,5 +21,6 @@ describe('support api', () => {
     test('ticket_forms', () => check(support.ticket_forms));
     test('ticket_metrics', () => check(support.ticket_metrics));
     test('tickets', () => check(support.tickets));
+    test('users', () => check(support.users));
   });
 });
