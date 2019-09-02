@@ -23,5 +23,6 @@ describe('support api', () => {
   test('ticket_forms', () => check(support.ticket_forms));
   test('ticket_metrics', () => check(support.ticket_metrics));
   test('tickets', () => check(support.tickets));
+  test('user_fields', () => check(support.user_fields));
   test('users', () => check(support.users));
 });

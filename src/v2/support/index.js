@@ -11,5 +11,6 @@ module.exports = ({ instance, headers }) => ({
   ticket_forms: require('./ticket_forms')({ instance, headers }),
   ticket_metrics: require('./ticket_metrics')({ instance, headers }),
   tickets: require('./tickets')({ instance, headers }),
+  user_fields: require('./user_fields')({ instance, headers }),
   users: require('./users')({ instance, headers })
 });
