@@ -17,6 +17,7 @@ describe('support api', () => {
   test('organization_fields', () => check(support.organization_fields));
   test('search', () => check(support.search, 'function'));
   test('tags', () => check(support.tags));
+  test('ticket_activities', () => check(support.ticket_activities));
   test('ticket_comments', () => check(support.ticket_comments));
   test('ticket_fields', () => check(support.ticket_fields));
   test('ticket_forms', () => check(support.ticket_forms));
