@@ -11,6 +11,7 @@ describe('support api', () => {
   beforeEach(() => (support = endpoint({ instance, headers })));
   afterEach(() => (support = null));
 
+  test('end_users', () => check(support.end_users));
   test('groups', () => check(support.groups));
   test('organizations', () => check(support.organizations));
   test('organization_fields', () => check(support.organization_fields));
