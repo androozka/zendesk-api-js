@@ -11,16 +11,15 @@ describe('support api', () => {
   beforeEach(() => (support = endpoint({ instance, headers })));
   afterEach(() => (support = null));
 
-  describe('tickets', () => {
-    test('groups', () => check(support.groups));
-    test('organizations', () => check(support.organizations));
-    test('search', () => check(support.search, 'function'));
-    test('tags', () => check(support.tags));
-    test('ticket_comments', () => check(support.ticket_comments));
-    test('ticket_fields', () => check(support.ticket_fields));
-    test('ticket_forms', () => check(support.ticket_forms));
-    test('ticket_metrics', () => check(support.ticket_metrics));
-    test('tickets', () => check(support.tickets));
-    test('users', () => check(support.users));
-  });
+  test('groups', () => check(support.groups));
+  test('organizations', () => check(support.organizations));
+  test('organization_fields', () => check(support.organization_fields));
+  test('search', () => check(support.search, 'function'));
+  test('tags', () => check(support.tags));
+  test('ticket_comments', () => check(support.ticket_comments));
+  test('ticket_fields', () => check(support.ticket_fields));
+  test('ticket_forms', () => check(support.ticket_forms));
+  test('ticket_metrics', () => check(support.ticket_metrics));
+  test('tickets', () => check(support.tickets));
+  test('users', () => check(support.users));
 });
