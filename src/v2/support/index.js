@@ -12,5 +12,6 @@ module.exports = ({ instance, headers }) => ({
   ticket_metrics: require('./ticket_metrics')({ instance, headers }),
   tickets: require('./tickets')({ instance, headers }),
   user_fields: require('./user_fields')({ instance, headers }),
-  users: require('./users')({ instance, headers })
+  users: require('./users')({ instance, headers }),
+  views: require('./views')({ instance, headers })
 });
