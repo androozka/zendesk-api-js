@@ -46,17 +46,22 @@ const instance = ''; // Name of Zendesk instance
 const email = ''; // Email address of Zendesk user
 const token = ''; // Generated Zendesk token
 
+const encoded = base64.encode(`${email}/token:${token}`);
+
 const headers = {
   'Content-Type': 'application/json',
-  Authorization: `Basic ${base64.encode(`${email}/token:${token}`)}`
+  Authorization: `Basic ${encoded}`
 };
 ```
 
 ### Choose framework version
 
 ```javascript
+const zdApi = require('@androozka/zendesk-api-js');
 const zaf_v2 = zdApi.v2({ instance, headers });
 ```
+
+- _**Note**: Only v2, [v1 being deprecated](https://support.zendesk.com/hc/en-us/articles/360002106888-Removal-of-Zendesk-Apps-framework-v1)_
 
 ### Selecting API endpoints
 
@@ -69,44 +74,34 @@ const { support, sunshine } = zaf_v2;
 ### Add tags to a ticket
 
 ```javascript
-const data = { tags: ['tag_1', 'tag_2', ... ] }
-const req = support.tags.add({ type: 'tickets', id: 123, data });
-const res = await axios(req);
+try {
+  const data = { tags: ['tag_1', 'tag_2', ... ] }
+  const req = support.tags.add({ type: 'tickets', id: 123, data });
+  const res = await axios(req);
+} catch (error) {
+  // ...
+}
 ```
 
 ## API Coverage Status
 
 ### Support API
 
-- [x] **Search**
-- [x] **Users**
-- [x] **Tickets**
-- [x] **Ticket Metrics**
-- [x] **Tags**
+Search, Users, End Users, Groups, Organizations, Tickets, Ticket Comments, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields
 
 #### Under Construction
 
-- [ ] Views
-- [ ] Organizations
-- [ ] Groups
-- [ ] Ticket Forms
-- [ ] Ticket Fields
-- [ ] User Fields
-- [ ] Organization Fields
 - [ ] Brands
 - [ ] User Identities
 - [ ] User Passwords
-- [ ] End Users
 - [ ] Group Memberships
 - [ ] Custom Agent Roles
 - [ ] Organization Subscriptions
 - [ ] Organization Memberships
 - [ ] Requests
 - [ ] Ticket Audits
-- [ ] Ticket Comments
 - [ ] Ticket Skips
 - [ ] Ticket Metric Events
-- [ ] Ticket Activities
 - [ ] Ticket Import
 - [ ] Attachments
 - [ ] Satisfaction Ratings
