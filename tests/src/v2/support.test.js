@@ -16,6 +16,7 @@ describe('support api', () => {
   test('organizations', () => check(support.organizations));
   test('organization_fields', () => check(support.organization_fields));
   test('search', () => check(support.search, 'function'));
+  test('suspended_tickets', () => check(support.suspended_tickets));
   test('tags', () => check(support.tags));
   test('ticket_activities', () => check(support.ticket_activities));
   test('ticket_comments', () => check(support.ticket_comments));
