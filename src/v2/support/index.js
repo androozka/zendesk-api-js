@@ -4,6 +4,7 @@ module.exports = ({ instance, headers }) => ({
   organizations: require('./organizations')({ instance, headers }),
   organization_fields: require('./organization_fields')({ instance, headers }),
   search: require('./search')({ instance, headers }),
+  suspended_tickets: require('./suspended_tickets')({ instance, headers }),
   tags: require('./tags')({ instance, headers }),
   ticket_activities: require('./ticket_activities')({ instance, headers }),
   ticket_comments: require('./ticket_comments')({ instance, headers }),
