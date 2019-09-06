@@ -12,6 +12,7 @@ describe('support api', () => {
   afterEach(() => (support = null));
 
   test('end_users', () => check(support.end_users));
+  test('group_memberships', () => check(support.group_memberships));
   test('groups', () => check(support.groups));
   test('organizations', () => check(support.organizations));
   test('organization_fields', () => check(support.organization_fields));

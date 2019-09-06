@@ -1,5 +1,6 @@
 module.exports = ({ instance, headers }) => ({
   end_users: require('./end_users')({ instance, headers }),
+  group_memberships: require('./group_memberships')({ instance, headers }),
   groups: require('./groups')({ instance, headers }),
   organizations: require('./organizations')({ instance, headers }),
   organization_fields: require('./organization_fields')({ instance, headers }),
