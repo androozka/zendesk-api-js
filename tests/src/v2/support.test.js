@@ -23,6 +23,7 @@ describe('support api', () => {
   test('ticket_comments', () => check(support.ticket_comments));
   test('ticket_fields', () => check(support.ticket_fields));
   test('ticket_forms', () => check(support.ticket_forms));
+  test('ticket_import', () => check(support.ticket_import));
   test('ticket_metrics', () => check(support.ticket_metrics));
   test('tickets', () => check(support.tickets));
   test('user_fields', () => check(support.user_fields));
