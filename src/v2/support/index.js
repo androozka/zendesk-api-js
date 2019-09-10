@@ -1,4 +1,5 @@
 module.exports = ({ instance, headers }) => ({
+  custom_agent_roles: require('./custom_agent_roles')({ instance, headers }),
   end_users: require('./end_users')({ instance, headers }),
   group_memberships: require('./group_memberships')({ instance, headers }),
   groups: require('./groups')({ instance, headers }),
