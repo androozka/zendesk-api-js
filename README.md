@@ -1,7 +1,7 @@
 # @androozka/zendesk-api-js
 
-![npm](https://img.shields.io/npm/v/@androozka/zendesk-api-js)
-[![Build Status](https://travis-ci.com/androozka/zendesk-api-js.svg?branch=master)](https://travis-ci.com/androozka/zendesk-api-js)
+![npm](https://img.shields.io/npm/v/@androozka/zendesk-api-js?logo=npm)
+[![Travis (.com)](https://img.shields.io/travis/com/androozka/zendesk-api-js?logo=travis)](https://travis-ci.com/androozka/zendesk-api-js)
 [![codecov](https://codecov.io/gh/androozka/zendesk-api-js/branch/master/graph/badge.svg)](https://codecov.io/gh/androozka/zendesk-api-js)
 [![David](https://img.shields.io/david/androozka/zendesk-api-js)](https://david-dm.org/androozka/zendesk-api-js)
 [![install size](https://packagephobia.now.sh/badge?p=@androozka/zendesk-api-js)](https://packagephobia.now.sh/result?p=@androozka/zendesk-api-js)
@@ -87,26 +87,22 @@ try {
 
 ### Support API
 
-Search, Users, End Users, Groups, Organizations, Tickets, Ticket Comments, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields
+Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Tickets, Ticket Import, Suspended Tickets, Ticket Comments, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields
 
 #### Under Construction
 
 - [ ] Brands
 - [ ] User Identities
 - [ ] User Passwords
-- [ ] Group Memberships
-- [ ] Custom Agent Roles
 - [ ] Organization Subscriptions
 - [ ] Organization Memberships
 - [ ] Requests
 - [ ] Ticket Audits
 - [ ] Ticket Skips
 - [ ] Ticket Metric Events
-- [ ] Ticket Import
 - [ ] Attachments
 - [ ] Satisfaction Ratings
 - [ ] Satisfaction Reasons
-- [ ] Suspended Tickets
 - [ ] Sessions
 - [ ] Triggers
 - [ ] Automations
