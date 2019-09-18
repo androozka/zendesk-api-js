@@ -8,16 +8,48 @@ const membership_id = Joi.number().min(1);
 const data = Joi.object();
 
 module.exports = {
-  list: options => Joi.validate(options, { user_id, group_id }),
-  assignable: options => Joi.validate(options, { group_id }),
-  show: options => Joi.validate(options, { id: id.required(), user_id }),
-  create: options => Joi.validate(options, { user_id, data: data.required() }),
-  create_many: options => Joi.validate(options, { data: data.required() }),
-  delete: options => Joi.validate(options, { id: id.required(), user_id }),
-  delete_many: options => Joi.validate(options, { ids: ids.required() }),
+  list: options =>
+    Joi.object({
+      user_id,
+      group_id
+    }).validate(options),
+
+  assignable: options =>
+    Joi.object({
+      group_id
+    }).validate(options),
+
+  show: options =>
+    Joi.object({
+      id: id.required(),
+      user_id
+    }).validate(options),
+
+  create: options =>
+    Joi.object({
+      user_id,
+      data: data.required()
+    }).validate(options),
+
+  create_many: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
+  delete: options =>
+    Joi.object({
+      id: id.required(),
+      user_id
+    }).validate(options),
+
+  delete_many: options =>
+    Joi.object({
+      ids: ids.required()
+    }).validate(options),
+
   default: options =>
-    Joi.validate(options, {
+    Joi.object({
       user_id: user_id.required(),
       membership_id: membership_id.required()
-    })
+    }).validate(options)
 };
