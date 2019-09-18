@@ -5,5 +5,10 @@ const ticket_metric_id = Joi.number().min(1);
 
 module.exports = {
   list: null, // no options
-  show: options => Joi.validate(options, { ticket_id, ticket_metric_id })
+
+  show: options =>
+    Joi.object({
+      ticket_id,
+      ticket_metric_id
+    }).validate(options)
 };

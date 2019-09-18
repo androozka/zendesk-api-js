@@ -10,31 +10,115 @@ const name = Joi.string().min(1);
 const data = Joi.object();
 
 module.exports = {
-  list: options => Joi.validate(options, { type, id }),
-  show: options => Joi.validate(options, { id: id.required() }),
-  show_many: options => Joi.validate(options, { ids, external_ids }),
-  related: options => Joi.validate(options, { id: id.required() }),
-  create: options => Joi.validate(options, { data: data.required() }),
-  create_or_update: options => Joi.validate(options, { data: data.required() }),
+  list: options =>
+    Joi.object({
+      type,
+      id
+    }).validate(options),
+
+  show: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  show_many: options =>
+    Joi.object({
+      ids,
+      external_ids
+    }).validate(options),
+
+  related: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  create: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
+  create_or_update: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
   create_or_update_many: options =>
-    Joi.validate(options, { data: data.required() }),
-  merge_self: options => Joi.validate(options, { data: data.required() }),
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
+  merge_self: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
   merge: options =>
-    Joi.validate(options, { id: id.required(), data: data.required() }),
-  create_many: options => Joi.validate(options, { data: data.required() }),
+    Joi.object({
+      id: id.required(),
+      data: data.required()
+    }).validate(options),
+
+  create_many: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
   update: options =>
-    Joi.validate(options, { id: id.required(), data: data.required() }),
+    Joi.object({
+      id: id.required(),
+      data: data.required()
+    }).validate(options),
+
   update_many: options =>
-    Joi.validate(options, { ids, external_ids, data: data.required() }),
-  delete_many: options => Joi.validate(options, { ids, external_ids }),
-  delete: options => Joi.validate(options, { id: id.required() }),
-  search: options => Joi.validate(options, { query, external_id }),
-  autocomplete: options => Joi.validate(options, { name: name.required() }),
-  request_create: options => Joi.validate(options, { data: data.required() }),
+    Joi.object({
+      ids,
+      external_ids,
+      data: data.required()
+    }).validate(options),
+
+  delete_many: options =>
+    Joi.object({
+      ids,
+      external_ids
+    }).validate(options),
+
+  delete: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  search: options =>
+    Joi.object({
+      query,
+      external_id
+    }).validate(options),
+
+  autocomplete: options =>
+    Joi.object({
+      name: name.required()
+    }).validate(options),
+
+  request_create: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
   list_deleted: null, // no options
-  show_deleted: options => Joi.validate(options, { id: id.required() }),
-  permanently_delete: options => Joi.validate(options, { id: id.required() }),
+
+  show_deleted: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  permanently_delete: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
   compliance_deletion_statuses: options =>
-    Joi.validate(options, { id: id.required() }),
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
   current: null // no options
 };

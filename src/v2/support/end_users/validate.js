@@ -4,7 +4,14 @@ const id = Joi.number().min(1);
 const data = Joi.object();
 
 module.exports = {
-  show: options => Joi.validate(options, { id: id.required() }),
+  show: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
   update: options =>
-    Joi.validate(options, { id: id.required(), data: data.required() })
+    Joi.object({
+      id: id.required(),
+      data: data.required()
+    }).validate(options)
 };
