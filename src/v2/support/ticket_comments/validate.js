@@ -5,18 +5,26 @@ const ticket_id = Joi.number().min(1);
 const data = Joi.object();
 
 module.exports = {
-  list: options => Joi.validate(options, { ticket_id: ticket_id.required() }),
+  list: options =>
+    Joi.object({
+      ticket_id: ticket_id.required()
+    }).validate(options),
+
   emailCCs: options =>
-    Joi.validate(options, { ticket_id: ticket_id.required() }),
+    Joi.object({
+      ticket_id: ticket_id.required()
+    }).validate(options),
+
   redact: options =>
-    Joi.validate(options, {
+    Joi.object({
       ticket_id: ticket_id.required(),
       id: id.required(),
       data: data.required()
-    }),
+    }).validate(options),
+
   makePrivate: options =>
-    Joi.validate(options, {
+    Joi.object({
       ticket_id: ticket_id.required(),
       id: id.required()
-    })
+    }).validate(options)
 };
