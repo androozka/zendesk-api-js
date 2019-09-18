@@ -15,34 +15,126 @@ const name = Joi.string().min(1);
 const data = Joi.object();
 
 module.exports = {
-  list: options => Joi.validate(options, { type, id }),
+  list: options =>
+    Joi.object({
+      type,
+      id
+    }).validate(options),
+
   list_by_external_id: options =>
-    Joi.validate(options, { external_id: external_id.required() }),
-  show: options => Joi.validate(options, { id: id.required() }),
-  show_many: options => Joi.validate(options, { ids: ids.required() }),
-  create: options => Joi.validate(options, { data: data.required() }),
-  create_many: options => Joi.validate(options, { data: data.required() }),
+    Joi.object({
+      external_id: external_id.required()
+    }).validate(options),
+
+  show: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  show_many: options =>
+    Joi.object({
+      ids: ids.required()
+    }).validate(options),
+
+  create: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
+  create_many: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
   update: options =>
-    Joi.validate(options, { id: id.required(), data: data.required() }),
-  update_many: options => Joi.validate(options, { ids, data: data.required() }),
-  mark_as_spam: options => Joi.validate(options, { id: id.required() }),
-  mark_as_spam_bulk: options => Joi.validate(options, { ids: ids.required() }),
+    Joi.object({
+      id: id.required(),
+      data: data.required()
+    }).validate(options),
+
+  update_many: options =>
+    Joi.object({
+      ids,
+      data: data.required()
+    }).validate(options),
+
+  mark_as_spam: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  mark_as_spam_bulk: options =>
+    Joi.object({
+      ids: ids.required()
+    }).validate(options),
+
   merge: options =>
-    Joi.validate(options, { id: id.required(), data: data.required() }),
-  related: options => Joi.validate(options, { id: id.required() }),
-  delete: options => Joi.validate(options, { id: id.required() }),
-  delete_bulk: options => Joi.validate(options, { ids: ids.required() }),
+    Joi.object({
+      id: id.required(),
+      data: data.required()
+    }).validate(options),
+
+  related: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  delete: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  delete_bulk: options =>
+    Joi.object({
+      ids: ids.required()
+    }).validate(options),
+
   deleted: null, // no options
-  restore: options => Joi.validate(options, { id: id.required() }),
-  restore_bulk: options => Joi.validate(options, { ids: ids.required() }),
-  delete_permanently: options => Joi.validate(options, { id: id.required() }),
+
+  restore: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  restore_bulk: options =>
+    Joi.object({
+      ids: ids.required()
+    }).validate(options),
+
+  delete_permanently: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
   delete_permanently_bulk: options =>
-    Joi.validate(options, { ids: ids.required() }),
-  collaborators: options => Joi.validate(options, { id: id.required() }),
-  followers: options => Joi.validate(options, { id: id.required() }),
-  email_ccs: options => Joi.validate(options, { id: id.required() }),
-  incidents: options => Joi.validate(options, { id: id.required() }),
+    Joi.object({
+      ids: ids.required()
+    }).validate(options),
+
+  collaborators: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  followers: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  email_ccs: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  incidents: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
   problems: null, // no options
+
   autocomplete_problems: options =>
-    Joi.validate(options, { name: name.required() })
+    Joi.object({
+      name: name.required()
+    }).validate(options)
 };
