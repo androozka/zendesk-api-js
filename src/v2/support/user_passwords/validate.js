@@ -5,15 +5,19 @@ const data = Joi.object();
 
 module.exports = {
   set: options =>
-    Joi.validate(options, {
+    Joi.object({
       user_id: user_id.required(),
       data: data.required()
-    }),
+    }).validate(options),
+
   change: options =>
-    Joi.validate(options, {
+    Joi.object({
       user_id: user_id.required(),
       data: data.required()
-    }),
+    }).validate(options),
+
   requirements: options =>
-    Joi.validate(options, { user_id: user_id.required() })
+    Joi.object({
+      user_id: user_id.required()
+    }).validate(options)
 };
