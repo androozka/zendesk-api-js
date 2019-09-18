@@ -5,9 +5,29 @@ const ids = Joi.string().min(3);
 
 module.exports = {
   list: null, // no options
-  show: options => Joi.validate(options, { id: id.required() }),
-  recover: options => Joi.validate(options, { id: id.required() }),
-  recover_many: options => Joi.validate(options, { ids: ids.required() }),
-  delete: options => Joi.validate(options, { id: id.required() }),
-  delete_many: options => Joi.validate(options, { ids: ids.required() })
+
+  show: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  recover: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  recover_many: options =>
+    Joi.object({
+      ids: ids.required()
+    }).validate(options),
+
+  delete: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  delete_many: options =>
+    Joi.object({
+      ids: ids.required()
+    }).validate(options)
 };

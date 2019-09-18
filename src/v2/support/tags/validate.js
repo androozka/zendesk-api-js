@@ -7,25 +7,36 @@ const data = Joi.object();
 
 module.exports = {
   list: null, // no options
+
   show: options =>
-    Joi.validate(options, { type: type.required(), id: id.required() }),
+    Joi.object({
+      type: type.required(),
+      id: id.required()
+    }).validate(options),
+
   set: options =>
-    Joi.validate(options, {
+    Joi.object({
       type: type.required(),
       id: id.required(),
       data: data.required()
-    }),
+    }).validate(options),
+
   add: options =>
-    Joi.validate(options, {
+    Joi.object({
       type: type.required(),
       id: id.required(),
       data: data.required()
-    }),
+    }).validate(options),
+
   remove: options =>
-    Joi.validate(options, {
+    Joi.object({
       type: type.required(),
       id: id.required(),
       data: data.required()
-    }),
-  autocomplete: options => Joi.validate(options, { name: name.required() })
+    }).validate(options),
+
+  autocomplete: options =>
+    Joi.object({
+      name: name.required()
+    }).validate(options)
 };
