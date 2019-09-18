@@ -5,9 +5,25 @@ const data = Joi.object();
 
 module.exports = {
   list: null, // no options
-  show: options => Joi.validate(options, { id: id.required() }),
-  create: options => Joi.validate(options, { data: data.required() }),
+
+  show: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options),
+
+  create: options =>
+    Joi.object({
+      data: data.required()
+    }).validate(options),
+
   update: options =>
-    Joi.validate(options, { id: id.required(), data: data.required() }),
-  delete: options => Joi.validate(options, { id: id.required() })
+    Joi.object({
+      id: id.required(),
+      data: data.required()
+    }).validate(options),
+
+  delete: options =>
+    Joi.object({
+      id: id.required()
+    }).validate(options)
 };
