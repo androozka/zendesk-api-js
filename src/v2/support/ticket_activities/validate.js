@@ -4,6 +4,9 @@ const activity_id = Joi.number().min(1);
 
 module.exports = {
   list: null, // no options
+
   show: options =>
-    Joi.validate(options, { activity_id: activity_id.required() })
+    Joi.object({
+      activity_id: activity_id.required()
+    }).validate(options)
 };
