@@ -40,7 +40,7 @@ describe("organization memberships", () => {
         organizationMemberships.list({ user_id: "invalid" })
       ).toThrowError();
       expect(() =>
-        organizationMemberships.list({ group_id: "invalid" })
+        organizationMemberships.list({ organization_id: "invalid" })
       ).toThrowError();
       expect(() =>
         organizationMemberships.list({ user_id: 123, organization_id: 456 })

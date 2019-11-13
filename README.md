@@ -35,21 +35,21 @@ yarn add @androozka/zendesk-api-js
 ### Suggested libraries
 
 ```javascript
-const base64 = require('js-base64').Base64;
-const axios = require('axios');
+const base64 = require("js-base64").Base64;
+const axios = require("axios");
 ```
 
 ### Zendesk account information
 
 ```javascript
-const instance = ''; // Name of Zendesk instance
-const email = ''; // Email address of Zendesk user
-const token = ''; // Generated Zendesk token
+const instance = ""; // Name of Zendesk instance
+const email = ""; // Email address of Zendesk user
+const token = ""; // Generated Zendesk token
 
 const encoded = base64.encode(`${email}/token:${token}`);
 
 const headers = {
-  'Content-Type': 'application/json',
+  "Content-Type": "application/json",
   Authorization: `Basic ${encoded}`
 };
 ```
@@ -57,7 +57,7 @@ const headers = {
 ### Choose framework version
 
 ```javascript
-const zdApi = require('@androozka/zendesk-api-js');
+const zdApi = require("@androozka/zendesk-api-js");
 const zaf_v2 = zdApi.v2({ instance, headers });
 ```
 
@@ -87,15 +87,13 @@ try {
 
 ### Support API
 
-Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Tickets, Ticket Import, Suspended Tickets, Ticket Comments, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields
+Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Organization Subscriptions, Organization Memberships, Tickets, Ticket Import, Suspended Tickets, Ticket Comments, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields
 
 #### Under Construction
 
 - [ ] Brands
 - [ ] User Identities
 - [ ] User Passwords
-- [ ] Organization Subscriptions
-- [ ] Organization Memberships
 - [ ] Requests
 - [ ] Ticket Audits
 - [ ] Ticket Skips
