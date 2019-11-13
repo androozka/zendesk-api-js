@@ -6,6 +6,7 @@ module.exports = ({ instance: i, headers: h }) => ({
   organizations: require("./organizations")({ i, h }),
   organization_fields: require("./organization_fields")({ i, h }),
   organization_memberships: require("./organization_memberships")({ i, h }),
+  organization_subscriptions: require("./organization_subscriptions")({ i, h }),
   search: require("./search")({ i, h }),
   suspended_tickets: require("./suspended_tickets")({ i, h }),
   tags: require("./tags")({ i, h }),

@@ -17,6 +17,8 @@ describe("support api", () => {
   test("groups", () => check(support.groups));
   test("organizations", () => check(support.organizations));
   test("organization_fields", () => check(support.organization_fields));
+  test("organization_subscriptions", () =>
+    check(support.organization_subscriptions));
   test("organization_memberships", () =>
     check(support.organization_memberships));
   test("search", () => check(support.search, "function"));
