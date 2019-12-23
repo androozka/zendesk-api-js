@@ -1,5 +1,7 @@
 const Joi = require('@hapi/joi');
+const { validate, prepare } = require('../../utils/options');
 
+// Validation
 const _key = Joi.string()
   .min(2)
   .max(32);
@@ -12,10 +14,20 @@ const _data = Joi.object({
   end_users_can_read: Joi.bool()
 });
 
-module.exports = ({ instance, headers }) => {
-  const url = `https://${instance}.zendesk.com`;
+// Initialize Endpoint
+module.exports = (options = {}) => {
+  const { error } = validate(options);
+  if (error) throw new Error(error.details[0].message);
+
+  const { url, headers } = prepare(options);
 
   return {
+    /**
+     * List Object Types
+     *
+     * GET /api/sunshine/objects/types
+     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#list-object-types
+     */
     list: () => {
       // Ignore any options
       return {
@@ -25,6 +37,12 @@ module.exports = ({ instance, headers }) => {
       };
     },
 
+    /**
+     * Show Object Type
+     *
+     * GET /api/sunshine/objects/types/{key}
+     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#show-object-type
+     */
     show: (options = {}) => {
       const { error } = Joi.object({
         key: _key.required()
@@ -39,6 +57,10 @@ module.exports = ({ instance, headers }) => {
       };
     },
 
+    /**
+     * Create Object Type
+     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#create-object-type
+     */
     create: (options = {}) => {
       const { error } = Joi.object({
         data: _data.required()
@@ -54,6 +76,10 @@ module.exports = ({ instance, headers }) => {
       };
     },
 
+    /**
+     * Update Object Type
+     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#update-object-type
+     */
     update: (options = {}) => {
       const { error } = Joi.object({
         key: _key.required(),
@@ -70,6 +96,10 @@ module.exports = ({ instance, headers }) => {
       };
     },
 
+    /**
+     * Delete Object Type
+     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#delete-object-type
+     */
     delete: (options = {}) => {
       const { error } = Joi.object({
         key: _key.required()
