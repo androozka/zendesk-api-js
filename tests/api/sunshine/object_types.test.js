@@ -2,7 +2,7 @@ const endpoint = require('../../../src/api/sunshine/object_types');
 const { prepare } = require('../../../src/utils/options');
 
 describe('object types', () => {
-  let object_types, options, url, headers;
+  let endPoint, options, url, headers;
 
   beforeEach(() => {
     options = {
@@ -10,13 +10,13 @@ describe('object types', () => {
       email: 'user@email.com',
       token: 'token'
     };
-    object_types = endpoint(options);
+    endPoint = endpoint(options);
     ({ url, headers } = prepare(options));
   });
 
   afterEach(() => {
     options = null;
-    object_types = null;
+    endPoint = null;
     url = null;
     headers = null;
   });
@@ -35,7 +35,7 @@ describe('object types', () => {
 
   describe('list object types', () => {
     it('should process without input', () => {
-      expect(object_types.list()).toEqual({
+      expect(endPoint.list()).toEqual({
         method: 'GET',
         url: `${url}/api/sunshine/objects/types`,
         headers
@@ -45,7 +45,7 @@ describe('object types', () => {
 
   describe('show object type', () => {
     it('should process valid input', () => {
-      expect(object_types.show({ key: 'valid' })).toEqual({
+      expect(endPoint.show({ key: 'valid' })).toEqual({
         method: 'GET',
         url: `${url}/api/sunshine/objects/types/valid`,
         headers
@@ -53,17 +53,17 @@ describe('object types', () => {
     });
 
     it('should fail with invalid input', () => {
-      expect(() => object_types.show()).toThrowError();
-      expect(() => object_types.show({})).toThrowError();
-      expect(() => object_types.show('invalid')).toThrowError();
-      expect(() => object_types.show({ key: 123 })).toThrowError();
+      expect(() => endPoint.show()).toThrowError();
+      expect(() => endPoint.show({})).toThrowError();
+      expect(() => endPoint.show('invalid')).toThrowError();
+      expect(() => endPoint.show({ key: 123 })).toThrowError();
     });
   });
 
   describe('create object type', () => {
     it('should process valid input', () => {
       const data = {};
-      expect(object_types.create({ data })).toEqual({
+      expect(endPoint.create({ data })).toEqual({
         method: 'POST',
         url: `${url}/api/sunshine/objects/types`,
         headers,
@@ -72,16 +72,16 @@ describe('object types', () => {
     });
 
     it('should fail with invalid input', () => {
-      expect(() => object_types.create()).toThrowError();
-      expect(() => object_types.create({})).toThrowError();
-      expect(() => object_types.create({ data: 'invalid' })).toThrowError();
-      expect(() => object_types.create({ data: 123 })).toThrowError();
+      expect(() => endPoint.create()).toThrowError();
+      expect(() => endPoint.create({})).toThrowError();
+      expect(() => endPoint.create({ data: 'invalid' })).toThrowError();
+      expect(() => endPoint.create({ data: 123 })).toThrowError();
     });
   });
 
   describe('update object type', () => {
     it('should process valid input', () => {
-      expect(object_types.update({ key: 'valid', data: {} })).toEqual({
+      expect(endPoint.update({ key: 'valid', data: {} })).toEqual({
         method: 'PUT',
         url: `${url}/api/sunshine/objects/types/valid`,
         headers,
@@ -90,19 +90,19 @@ describe('object types', () => {
     });
 
     it('should fail with invalid input', () => {
-      expect(() => object_types.update()).toThrowError();
-      expect(() => object_types.update({})).toThrowError();
-      expect(() => object_types.update({ key: 123 })).toThrowError();
-      expect(() => object_types.update({ key: 'valid' })).toThrowError();
+      expect(() => endPoint.update()).toThrowError();
+      expect(() => endPoint.update({})).toThrowError();
+      expect(() => endPoint.update({ key: 123 })).toThrowError();
+      expect(() => endPoint.update({ key: 'valid' })).toThrowError();
       expect(() =>
-        object_types.update({ key: 'valid', data: 'invalid' })
+        endPoint.update({ key: 'valid', data: 'invalid' })
       ).toThrowError();
     });
   });
 
   describe('delete object type', () => {
     it('should process valid input', () => {
-      expect(object_types.delete({ key: 'valid' })).toEqual({
+      expect(endPoint.delete({ key: 'valid' })).toEqual({
         method: 'DELETE',
         url: `${url}/api/sunshine/objects/types/valid`,
         headers
@@ -110,9 +110,9 @@ describe('object types', () => {
     });
 
     it('should fail with invalid input', () => {
-      expect(() => object_types.delete()).toThrowError();
-      expect(() => object_types.delete({})).toThrowError();
-      expect(() => object_types.delete({ key: 123 })).toThrowError();
+      expect(() => endPoint.delete()).toThrowError();
+      expect(() => endPoint.delete({})).toThrowError();
+      expect(() => endPoint.delete({ key: 123 })).toThrowError();
     });
   });
 });
