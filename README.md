@@ -16,57 +16,50 @@ A JS library for interacting with the Zendesk API.
 - Send prepared object directly to axios 🤯
 - Mirrors [Zendesk's API documentation](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources) 👀
 
+_**Note**: Only v2 framework, [v1 deprecated](https://support.zendesk.com/hc/en-us/articles/360002106888-Removal-of-Zendesk-Apps-framework-v1)_
+
 ## Installing
 
-### Using npm
-
 ```bash
+# using npm
 npm install @androozka/zendesk-api-js
-```
 
-### Using yarn
-
-```bash
+# using yarn
 yarn add @androozka/zendesk-api-js
 ```
 
 ## Usage
 
-### Suggested libraries
+### Getting Started
 
 ```javascript
-const base64 = require("js-base64").Base64;
-const axios = require("axios");
+const axios = require('axios'); // Suggested library
+const zdApi = require('@androozka/zendesk-api-js');
 ```
 
-### Zendesk account information
+### Zendesk Info
 
 ```javascript
-const instance = ""; // Name of Zendesk instance
-const email = ""; // Email address of Zendesk user
-const token = ""; // Generated Zendesk token
-
-const encoded = base64.encode(`${email}/token:${token}`);
-
-const headers = {
-  "Content-Type": "application/json",
-  Authorization: `Basic ${encoded}`
+const options = {
+  instance: '', // Zendesk subdomain
+  email: '', // User account to perform requests
+  password: '', // Password for user account
+  token: '' // Generated Zendesk token
 };
+/* Note: Either "password" or "token" is required */
 ```
 
-### Choose framework version
+### Initalize
 
 ```javascript
-const zdApi = require("@androozka/zendesk-api-js");
-const zaf_v2 = zdApi.v2({ instance, headers });
-```
+// Load entire library
+const { support, sunshine } = zdApi.init(options);
 
-- _**Note**: Only v2, [v1 being deprecated](https://support.zendesk.com/hc/en-us/articles/360002106888-Removal-of-Zendesk-Apps-framework-v1)_
+// Load entire API
+const { tickets, groups } = zdApi.support.init(options);
 
-### Selecting API endpoints
-
-```javascript
-const { support, sunshine } = zaf_v2;
+// Load specific endpoint
+const endpoint = zdApi.support.tickets.init(options);
 ```
 
 ## Examples
@@ -75,8 +68,9 @@ const { support, sunshine } = zaf_v2;
 
 ```javascript
 try {
+  const tags = zdApi.support.tags.init(options);
   const data = { tags: ['tag_1', 'tag_2', ... ] }
-  const req = support.tags.add({ type: 'tickets', id: 123, data });
+  const req = tags.add({ type: 'tickets', id: 123, data });
   const res = await axios(req);
 } catch (error) {
   // ...
@@ -89,7 +83,13 @@ try {
 
 Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Organization Subscriptions, Organization Memberships, Tickets, Ticket Import, Suspended Tickets, Ticket Comments, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields
 
-#### Under Construction
+### Sunshine API
+
+Custom Object Types, Custom Object Records
+
+### Under Construction
+
+#### Support
 
 - [ ] Brands
 - [ ] User Identities
