@@ -1,10 +1,11 @@
 const base64 = require('js-base64').Base64;
-const { generate } = require('../../src/utils/headers');
+const utilHeaders = require('../../src/utils/headers');
 
 describe('headers', () => {
-  let options;
+  let options, generate;
 
   beforeEach(() => {
+    ({ generate } = utilHeaders);
     options = {
       email: 'user@email.com',
       password: 'password',
@@ -14,10 +15,17 @@ describe('headers', () => {
 
   afterEach(() => {
     options = null;
+    generate = null;
+  });
+
+  describe('index', () => {
+    it('should load files', () => {
+      expect(generate).toBeTruthy();
+    });
   });
 
   describe('generate', () => {
-    it('should process using an email & password', () => {
+    it('should process using provided email & password', () => {
       const { email, password } = options;
       const encoded = base64.encode(`${email}:${password}`);
 
@@ -27,7 +35,7 @@ describe('headers', () => {
       });
     });
 
-    it('should process using an email & token', () => {
+    it('should process using provided email & token', () => {
       const { email, token } = options;
       const encoded = base64.encode(`${email}/token:${token}`);
 
@@ -38,12 +46,14 @@ describe('headers', () => {
     });
 
     it('should fail with invalid input', () => {
-      const { email, token } = options;
+      const { email, password, token } = options;
 
       expect(() => generate()).toThrowError();
       expect(() => generate({})).toThrowError();
       expect(() => generate({ email })).toThrowError();
+      expect(() => generate({ password })).toThrowError();
       expect(() => generate({ token })).toThrowError();
+      expect(() => generate({ email, password, token })).toThrowError();
     });
   });
 });
