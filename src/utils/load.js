@@ -11,7 +11,12 @@ module.exports = folder => {
   // Load each endpoint file
   const api = {};
   endpoints.forEach(endpoint => {
-    api[endpoint] = require(path.resolve('../', folder, endpoint));
+    api[endpoint] = require(path.resolve(
+      __dirname,
+      '../api',
+      folder,
+      endpoint
+    ));
   });
 
   // Initialize each endpoint

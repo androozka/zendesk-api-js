@@ -16,7 +16,8 @@ const init = (options = {}) => {
   if (error) throw new Error(error.details[0].message);
 
   const initialized = {};
-  zdAPIs.forEach(api => (initialized[api] = zdAPIs[api].init(options)));
+  for (const api in zdAPIs) initialized[api] = zdAPIs[api].init(options);
+  // zdAPIs.forEach(api => (initialized[api] = zdAPIs[api].init(options)));
 
   return initialized;
 };
