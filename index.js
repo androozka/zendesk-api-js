@@ -1,20 +1,25 @@
-// array list for each folder in src
 const fs = require('fs');
-const validate = require('./src/validate');
+const path = require('path');
+const { validate } = require('./src/utils/options');
+const load = require('./src/utils/load');
 
-// Load all APIs
+// Read folders to list APIs ('/src/api/*')
+const APIs = fs.readdirSync(path.resolve(__dirname, 'src/api'));
+
+// Load each API (support, sunshine, ...)
 const zdAPIs = {};
-const endpoints = fs.readdirSync('./src').filter(i => i !== 'validate.js');
-endpoints.forEach(i => (zdAPIs[i] = require(`./src/${i}`)));
+APIs.forEach(api => (zdAPIs[api] = load(api)));
 
+// Initialize each API
 const init = (options = {}) => {
   const { error } = validate(options);
   if (error) throw new Error(error.details[0].message);
 
-  const api = {};
-  endpoints.forEach(i => (api[i] = zdAPIs[i].init(options)));
+  const initialized = {};
+  for (const api in zdAPIs) initialized[api] = zdAPIs[api].init(options);
+  // zdAPIs.forEach(api => (initialized[api] = zdAPIs[api].init(options)));
 
-  return api;
+  return initialized;
 };
 
 module.exports = { init, ...zdAPIs };
