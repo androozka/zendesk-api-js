@@ -1,14 +1,14 @@
 const load = require('../../../src/utils/load');
 
+// Pick API endpoint for testing
+const folder = 'support';
+const endpoint = 'tickets';
+const action = 'list';
+
 describe('utils: load', () => {
-  let folder, endpoint, action, options, api;
+  let options, api;
 
   beforeEach(() => {
-    // Pick API endpoint for testing
-    folder = 'support';
-    endpoint = 'tickets';
-    action = 'list';
-
     options = {
       instance: 'instance',
       email: 'test@email.com',
@@ -20,18 +20,17 @@ describe('utils: load', () => {
   });
 
   afterEach(() => {
-    folder = null;
-    endpoint = null;
-    action = null;
     options = null;
   });
 
-  it(`should load api "${folder}"`, () => {
-    const api = load(folder);
+  describe('load api', () => {
+    it(`should load api "${folder}"`, () => {
+      const api = load(folder);
 
-    expect(api).toBeTruthy();
-    expect(api.init).toBeTruthy();
-    expect(api[endpoint]).toBeTruthy();
+      expect(api).toBeTruthy();
+      expect(api.init).toBeTruthy();
+      expect(api[endpoint]).toBeTruthy();
+    });
   });
 
   describe('init', () => {
