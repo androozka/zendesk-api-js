@@ -59,7 +59,7 @@ const { support, sunshine } = zdApi.init(options);
 const { tickets, groups } = zdApi.support.init(options);
 
 // Load specific endpoint
-const { list, create } = zdApi.support.tickets.init(options);
+const { list, create } = zdApi.support.tickets(options);
 ```
 
 ## Examples
