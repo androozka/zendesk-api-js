@@ -24,10 +24,12 @@ describe('zdApi', () => {
     options = null;
   });
 
-  it(`should load api "${folder}"`, () => {
-    expect(zdApi).toBeTruthy();
-    expect(zdApi.init).toBeTruthy();
-    expect(zdApi[folder]).toBeTruthy();
+  describe('api loading', () => {
+    it(`should prepare to load api "${folder}"`, () => {
+      expect(zdApi).toBeTruthy();
+      expect(zdApi.init).toBeTruthy();
+      expect(zdApi[folder]).toBeTruthy();
+    });
   });
 
   describe('init', () => {

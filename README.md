@@ -59,7 +59,7 @@ const { support, sunshine } = zdApi.init(options);
 const { tickets, groups } = zdApi.support.init(options);
 
 // Load specific endpoint
-const endpoint = zdApi.support.tickets.init(options);
+const { list, create } = zdApi.support.tickets.init(options);
 ```
 
 ## Examples
@@ -68,9 +68,11 @@ const endpoint = zdApi.support.tickets.init(options);
 
 ```javascript
 try {
-  const tags = zdApi.support.tags.init(options);
+  const { tags } = zdApi.support.init(options);
   const data = { tags: ['tag_1', 'tag_2', ... ] }
+
   const req = tags.add({ type: 'tickets', id: 123, data });
+
   const res = await axios(req);
 } catch (error) {
   // ...

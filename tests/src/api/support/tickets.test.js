@@ -23,8 +23,7 @@ describe('object types', () => {
 
   describe('init', () => {
     it('should setup endpoint object', () => {
-      const ep = endpoint(options);
-      expect(ep).toBeTruthy();
+      expect(endpoint(options)).toBeTruthy();
     });
 
     it('should fail with invalid input', () => {

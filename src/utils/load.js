@@ -10,14 +10,13 @@ module.exports = folder => {
 
   // Load each endpoint file
   const api = {};
-  endpoints.forEach(endpoint => {
+  for (const endpoint of endpoints)
     api[endpoint] = require(path.resolve(
       __dirname,
       '../api',
       folder,
       endpoint
     ));
-  });
 
   // Initialize each endpoint
   const init = (options = {}) => {
@@ -25,9 +24,8 @@ module.exports = folder => {
     if (error) throw new Error(error.details[0].message);
 
     const initialized = {};
-    endpoints.forEach(endpoint => {
+    for (const endpoint of endpoints)
       initialized[endpoint] = api[endpoint](options);
-    });
 
     return initialized;
   };
