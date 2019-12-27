@@ -23,25 +23,25 @@ module.exports = (options = {}) => {
 
   return {
     /**
-     * List Object Types
+     * List Relationship Types
      *
-     * GET /api/sunshine/objects/types
-     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#list-object-types
+     * GET /api/sunshine/relationships/types
+     * https://developer.zendesk.com/rest_api/docs/sunshine/relationship_types#list-relationship-types
      */
     list: () => {
       // Ignore any options
       return {
         method: 'GET',
-        url: `${url}/api/sunshine/objects/types`,
+        url: `${url}/api/sunshine/relationships/types`,
         headers
       };
     },
 
     /**
-     * Show Object Type
+     * Show Relationship Type
      *
-     * GET /api/sunshine/objects/types/{key}
-     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#show-object-type
+     * GET /api/sunshine/relationships/types/{key}
+     * https://developer.zendesk.com/rest_api/docs/sunshine/relationship_types#show-relationship-type
      */
     show: (options = {}) => {
       const { error } = Joi.object({
@@ -52,16 +52,16 @@ module.exports = (options = {}) => {
       const { key } = options;
       return {
         method: 'GET',
-        url: `${url}/api/sunshine/objects/types/${key}`,
+        url: `${url}/api/sunshine/relationships/types/${key}`,
         headers
       };
     },
 
     /**
-     * Create Object Type
+     * Create Relationship Type
      *
-     * POST /api/sunshine/objects/types
-     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#create-object-type
+     * POST /api/sunshine/relationships/types
+     * https://developer.zendesk.com/rest_api/docs/sunshine/relationship_types#create-relationship-type
      */
     create: (options = {}) => {
       const { error } = Joi.object({
@@ -72,39 +72,17 @@ module.exports = (options = {}) => {
       const { data } = options;
       return {
         method: 'POST',
-        url: `${url}/api/sunshine/objects/types`,
+        url: `${url}/api/sunshine/relationships/types`,
         headers,
         data
       };
     },
 
     /**
-     * Update Object Type
+     * Delete Relationship Type
      *
-     * PUT /api/sunshine/objects/types/{key}
-     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#update-object-type
-     */
-    update: (options = {}) => {
-      const { error } = Joi.object({
-        key: _key.required(),
-        data: _data.required()
-      }).validate(options);
-      if (error) throw new Error(error.details[0].message);
-
-      const { key, data } = options;
-      return {
-        method: 'PUT',
-        url: `${url}/api/sunshine/objects/types/${key}`,
-        headers,
-        data
-      };
-    },
-
-    /**
-     * Delete Object Type
-     *
-     * DELETE /api/sunshine/objects/types/{key}
-     * https://developer.zendesk.com/rest_api/docs/sunshine/resource_types#delete-object-type
+     * DELETE /api/sunshine/relationships/types/{key}
+     * https://developer.zendesk.com/rest_api/docs/sunshine/relationship_types#delete-relationship-type
      */
     delete: (options = {}) => {
       const { error } = Joi.object({
@@ -115,7 +93,7 @@ module.exports = (options = {}) => {
       const { key } = options;
       return {
         method: 'DELETE',
-        url: `${url}/api/sunshine/objects/types/${key}`,
+        url: `${url}/api/sunshine/relationships/types/${key}`,
         headers
       };
     }

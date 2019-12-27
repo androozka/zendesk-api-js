@@ -87,7 +87,7 @@ Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organiz
 
 ### Sunshine API
 
-Custom Object Types, Custom Object Records
+Custom Object Types, Custom Object Records, Relationship Types
 
 ### Under Construction
 
