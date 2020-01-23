@@ -1,7 +1,7 @@
 const endpoint = require('../../../../src/api/sunshine/object_records');
 const { prepare } = require('../../../../src/utils/options');
 
-describe('object types', () => {
+describe('object records', () => {
   let endPoint, options, url, headers;
 
   beforeEach(() => {

@@ -83,11 +83,11 @@ try {
 
 ### Support API
 
-Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Organization Subscriptions, Organization Memberships, Tickets, Ticket Import, Suspended Tickets, Ticket Comments, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields
+Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Organization Subscriptions, Organization Memberships, Tickets, Ticket Import, Satisfaction Ratings, Satisfaction Reasons, Suspended Tickets, Ticket Audits, Ticket Comments, Ticket Skips, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields, Job Statuses, Audit Logs
 
 ### Sunshine API
 
-Custom Object Types, Custom Object Records
+Custom Object Types, Custom Object Records, Relationship Types, Relationship Records
 
 ### Under Construction
 
@@ -97,12 +97,8 @@ Custom Object Types, Custom Object Records
 - [ ] User Identities
 - [ ] User Passwords
 - [ ] Requests
-- [ ] Ticket Audits
-- [ ] Ticket Skips
 - [ ] Ticket Metric Events
 - [ ] Attachments
-- [ ] Satisfaction Ratings
-- [ ] Satisfaction Reasons
 - [ ] Sessions
 - [ ] Triggers
 - [ ] Automations
@@ -115,7 +111,6 @@ Custom Object Types, Custom Object Records
 - [ ] Schedules
 - [ ] Sharing Agreements
 - [ ] Support Addresses
-- [ ] Job Statuses
 - [ ] Skill-based Routing
 - [ ] Incremental Skill-based Routing
 - [ ] Workspaces
@@ -127,16 +122,23 @@ Custom Object Types, Custom Object Records
 - [ ] OAuth Tokens for Grant Types
 - [ ] Authorized Global Clients
 - [ ] Account Settings
-- [ ] Audit Logs
 - [ ] Bookmarks
 - [ ] Push Notification Devices
 - [ ] Resource Collections
 - [ ] Channel Framework
 - [ ] Twitter Channel
 
+#### Sunshine
+
+- [ ] Custom Objects Events
+- [ ] Jobs
+- [ ] Limits
+- [ ] Events
+- [ ] Profiles
+- [ ] People
+
 ### APIs Up Next
 
-- Sunshine API
 - Help Center API
 - Chat API
 - Talk API
