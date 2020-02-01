@@ -83,21 +83,19 @@ try {
 
 ### Support API
 
-Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Organization Subscriptions, Organization Memberships, Tickets, Ticket Import, Satisfaction Ratings, Satisfaction Reasons, Suspended Tickets, Ticket Audits, Ticket Comments, Ticket Skips, Ticket Metrics, Ticket Activities, Tags, Views, Ticket Forms, Ticket Fields, User Fields, Organization Fields, Job Statuses, Audit Logs
+Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Organization Subscriptions, Organization Memberships, Tickets, Ticket Import, Satisfaction Ratings, Satisfaction Reasons, Suspended Tickets, Ticket Audits, Ticket Comments, Ticket Skips, Ticket Metrics, Ticket Metric Events, Ticket Activities, Tags, Views, Brands, Sharing Agreements, Support Addresses, Ticket Forms, Ticket Fields, User Fields, Organization Fields, Job Statuses, Incremental Skill-based Routing, Workspaces, App Installation Locations, Account Settings, Audit Logs, Twitter Channel
 
 ### Sunshine API
 
-Custom Object Types, Custom Object Records, Relationship Types, Relationship Records
+Custom Object Types, Custom Object Records, Relationship Types, Relationship Records, Custom Objects Events
 
 ### Under Construction
 
 #### Support
 
-- [ ] Brands
 - [ ] User Identities
 - [ ] User Passwords
 - [ ] Requests
-- [ ] Ticket Metric Events
 - [ ] Attachments
 - [ ] Sessions
 - [ ] Triggers
@@ -109,28 +107,20 @@ Custom Object Types, Custom Object Records, Relationship Types, Relationship Rec
 - [ ] Dynamic Content
 - [ ] Locales
 - [ ] Schedules
-- [ ] Sharing Agreements
-- [ ] Support Addresses
 - [ ] Skill-based Routing
-- [ ] Incremental Skill-based Routing
-- [ ] Workspaces
 - [ ] Apps
-- [ ] App Installation Locations
 - [ ] App Locations
 - [ ] OAuth Clients
 - [ ] OAuth Tokens
 - [ ] OAuth Tokens for Grant Types
 - [ ] Authorized Global Clients
-- [ ] Account Settings
 - [ ] Bookmarks
 - [ ] Push Notification Devices
 - [ ] Resource Collections
 - [ ] Channel Framework
-- [ ] Twitter Channel
 
 #### Sunshine
 
-- [ ] Custom Objects Events
 - [ ] Jobs
 - [ ] Limits
 - [ ] Events
