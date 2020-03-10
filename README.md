@@ -83,7 +83,7 @@ try {
 
 ### Support API
 
-Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Organization Subscriptions, Organization Memberships, Tickets, Ticket Import, Satisfaction Ratings, Satisfaction Reasons, Suspended Tickets, Ticket Audits, Ticket Comments, Ticket Skips, Ticket Metrics, Ticket Metric Events, Ticket Activities, Tags, Views, Brands, Sharing Agreements, Support Addresses, Ticket Forms, Ticket Fields, User Fields, Organization Fields, Job Statuses, Incremental Skill-based Routing, Workspaces, App Installation Locations, Account Settings, Audit Logs, Twitter Channel
+Search, Users, End Users, Groups, Group Memberships, Custom Agent Roles, Organizations, Organization Subscriptions, Organization Memberships, Tickets, Ticket Import, Satisfaction Ratings, Satisfaction Reasons, Suspended Tickets, Ticket Audits, Ticket Comments, Ticket Skips, Ticket Metrics, Ticket Metric Events, Ticket Activities, Tags, Views, Automations, SLA Policies, Targets, Target Failures, Brands, Locales, Schedules, Sharing Agreements, Support Addresses, Ticket Forms, Ticket Fields, User Fields, Organization Fields, Job Statuses, Incremental Skill-based Routing, Workspaces, App Installation Locations, App Locations, Account Settings, Audit Logs, Bookmarks, Twitter Channel
 
 ### Sunshine API
 
@@ -99,22 +99,14 @@ Custom Object Types, Custom Object Records, Relationship Types, Relationship Rec
 - [ ] Attachments
 - [ ] Sessions
 - [ ] Triggers
-- [ ] Automations
-- [ ] SLA Policies
-- [ ] Targets
-- [ ] Target Failures
 - [ ] Macros
 - [ ] Dynamic Content
-- [ ] Locales
-- [ ] Schedules
 - [ ] Skill-based Routing
 - [ ] Apps
-- [ ] App Locations
 - [ ] OAuth Clients
 - [ ] OAuth Tokens
 - [ ] OAuth Tokens for Grant Types
 - [ ] Authorized Global Clients
-- [ ] Bookmarks
 - [ ] Push Notification Devices
 - [ ] Resource Collections
 - [ ] Channel Framework
